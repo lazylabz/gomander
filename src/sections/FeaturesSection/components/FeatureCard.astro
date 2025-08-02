@@ -1,13 +1,20 @@
 ---
 import CommandGroupsFeatureIcon from '../icons/CommandGroupsFeatureIcon.astro';
 import ProjectsFeatureIcon from '../icons/ProjectsFeatureIcon.astro';
+import RealTimeFeatureIcon from '../icons/RealTimeFeatureIcon.astro';
+import ConfigurationFeatureIcon from '../icons/ConfigurationFeatureIcon.astro';
+import CrossPlatformFeatureIcon from '../icons/CrossPlatformFeatureIcon.astro';
+import LearningCurveFeatureIcon from '../icons/LearningCurveFeatureIcon.astro';
 
-// type Icon = 'Projects' | 'CommandGroups' | 'RealTime' | 'Configuration' | 'CrossPlatform' | 'ZeroLearningCurve';
-type Icon = 'Projects' | 'CommandGroups';
+type Icon = 'Projects' | 'CommandGroups' | 'RealTime' | 'Configuration' | 'CrossPlatform' | 'ZeroLearningCurve';
 
 const iconsMap = {
     Projects: ProjectsFeatureIcon,
     CommandGroups: CommandGroupsFeatureIcon,
+    RealTime: RealTimeFeatureIcon,
+    Configuration: ConfigurationFeatureIcon,
+    CrossPlatform: CrossPlatformFeatureIcon,
+    ZeroLearningCurve: LearningCurveFeatureIcon,
 } as const;
 
 interface Props {
