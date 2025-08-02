@@ -1,11 +1,13 @@
 ---
+import CommandGroupsFeatureIcon from '../icons/CommandGroupsFeatureIcon.astro';
 import ProjectsFeatureIcon from '../icons/ProjectsFeatureIcon.astro';
 
 // type Icon = 'Projects' | 'CommandGroups' | 'RealTime' | 'Configuration' | 'CrossPlatform' | 'ZeroLearningCurve';
-type Icon = 'Projects';
+type Icon = 'Projects' | 'CommandGroups';
 
 const iconsMap = {
     Projects: ProjectsFeatureIcon,
+    CommandGroups: CommandGroupsFeatureIcon,
 } as const;
 
 interface Props {
