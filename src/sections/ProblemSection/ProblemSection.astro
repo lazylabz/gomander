@@ -1,11 +1,13 @@
 ---
 import ProblemCard from "./components/ProblemCard.astro";
+import ProblemTitle from "./components/ProblemTitle.astro";
+import ProblemSubtitle from "./components/ProblemSubtitle.astro";
 ---
 <section class="py-20 bg-white">
     <div class="container mx-auto px-6">
         <div class="text-center mb-16">
-            <h2 class="text-4xl font-bold text-gray-900 mb-6">The Developer's Terminal Nightmare</h2>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Every developer knows this pain. Modern apps require multiple services, and that means...</p>
+            <ProblemTitle />
+            <ProblemSubtitle />
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
