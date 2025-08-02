@@ -1,5 +1,6 @@
 ---
 import VersionPill from "./components/VersionPill.astro";
+import HeroTitle from "./components/HeroTitle.astro";
 ---
 <section class="hero-gradient relative overflow-hidden min-h-screen flex items-center">
     <!-- Floating background elements -->
@@ -13,14 +14,7 @@ import VersionPill from "./components/VersionPill.astro";
             <!-- Left Content -->
             <div class="text-white">
                 <VersionPill />
-
-                <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
-                    Command Your
-                    <span class="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
-                            Development
-                        </span>
-                    Workflow
-                </h1>
+                <HeroTitle />
 
                 <p class="text-xl text-gray-300 mb-8 leading-relaxed">
                     Stop juggling 10+ terminal windows. Gomander is the simple GUI that lets you launch, monitor, and organize all your commands in one beautiful interface.
