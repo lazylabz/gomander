@@ -6,6 +6,7 @@ import DownloadCTA from "./components/DownloadCTA.astro";
 import GithubCTA from "./components/GithubCTA.astro";
 import ChecklistItem from "./components/ChecklistItem.astro";
 import TerminalMockup from "./components/TerminalMockup.astro";
+import ScrollIndicator from "./components/ScrollIndicator.astro";
 ---
 <section class="hero-gradient relative overflow-hidden min-h-screen flex items-center">
     <!-- Floating background elements -->
@@ -16,7 +17,6 @@ import TerminalMockup from "./components/TerminalMockup.astro";
 
     <div class="container mx-auto px-6 relative z-10">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
-            <!-- Left Content -->
             <div class="text-white">
                 <VersionPill />
                 <HeroTitle />
@@ -38,26 +38,12 @@ import TerminalMockup from "./components/TerminalMockup.astro";
         </div>
     </div>
 
-    <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <div class="w-8 h-12 border-2 border-white rounded-full flex justify-center">
-            <div class="w-1 h-3 bg-white rounded-full mt-2 bounce-slow"></div>
-        </div>
-    </div>
+    <ScrollIndicator />
 </section>
 
 <style>
     .hero-gradient {
         background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
-    }
-
-    .bounce-slow {
-        animation: bounce 3s infinite;
-    }
-
-    @keyframes bounce {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(3px); }
     }
 
     .float {

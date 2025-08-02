@@ -1,0 +1,16 @@
+<div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+    <div class="w-8 h-12 border-2 border-white rounded-full flex justify-center">
+        <div class="w-1 h-3 bg-white rounded-full mt-2 bounce-slow"></div>
+    </div>
+</div>
+
+<style>
+    .bounce-slow {
+        animation: bounce 3s infinite;
+    }
+
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(3px); }
+    }
+</style>
