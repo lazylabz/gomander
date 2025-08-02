@@ -1,6 +1,7 @@
 ---
 import VersionPill from "./components/VersionPill.astro";
 import HeroTitle from "./components/HeroTitle.astro";
+import HeroDescription from "./components/HeroDescription.astro";
 ---
 <section class="hero-gradient relative overflow-hidden min-h-screen flex items-center">
     <!-- Floating background elements -->
@@ -15,10 +16,7 @@ import HeroTitle from "./components/HeroTitle.astro";
             <div class="text-white">
                 <VersionPill />
                 <HeroTitle />
-
-                <p class="text-xl text-gray-300 mb-8 leading-relaxed">
-                    Stop juggling 10+ terminal windows. Gomander is the simple GUI that lets you launch, monitor, and organize all your commands in one beautiful interface.
-                </p>
+                <HeroDescription />
 
                 <!-- Primary CTA -->
                 <div class="flex flex-col sm:flex-row gap-4 mb-8">
