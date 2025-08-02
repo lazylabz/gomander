@@ -1,0 +1,52 @@
+<div class="relative">
+    <div class="terminal-mockup">
+        <div class="terminal-header">
+            <div class="terminal-dot bg-red-500"></div>
+            <div class="terminal-dot bg-yellow-500"></div>
+            <div class="terminal-dot bg-green-500"></div>
+            <span class="text-gray-400 text-sm ml-4">Gomander - Development Server</span>
+        </div>
+        <div class="terminal-content text-green-400">
+            <div class="mb-2">$ gomander start dev-group</div>
+            <div class="text-blue-400 mb-1">→ Starting Frontend Server...</div>
+            <div class="text-yellow-400 mb-1">→ Starting Backend API...</div>
+            <div class="text-purple-400 mb-1">→ Starting Database...</div>
+            <div class="text-green-400 mb-2">✓ All services running</div>
+            <div class="flex items-center">
+                <span class="mr-2">$</span>
+                <span class="animate-pulse">|</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .terminal-mockup {
+        background: #1a1a1a;
+        border-radius: 8px;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+    }
+
+    .terminal-header {
+        background: #2d2d2d;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        padding: 12px 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .terminal-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+    }
+
+    .terminal-content {
+        padding: 20px;
+        font-family: 'Courier New', monospace;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+</style>
