@@ -1,0 +1,26 @@
+---
+import MacOsIcon from '../icons/MacOsIcon.astro';
+import WindowsIcon from '../icons/WindowsIcon.astro';
+import LinuxIcon from '../icons/LinuxIcon.astro';
+
+type OS = 'macOS' | 'Windows' | 'Linux';
+
+interface Props {
+    os: OS;
+}
+
+const iconsMap = {
+    macOS: MacOsIcon,
+    Windows: WindowsIcon,
+    Linux: LinuxIcon,
+} as const;
+
+const { os } = Astro.props;
+const OSIcon = iconsMap[os];
+---
+
+<a href="https://github.com/moisesrj97/gomander" target="_blank"
+   class="bg-white text-gray-900 px-8 py-4 rounded-lg font-semibold text-lg flex items-center gap-2 hover:bg-gray-200 transition-all duration-300 min-w-[200px]">
+    <OSIcon />
+    Download for {os}
+</a>
