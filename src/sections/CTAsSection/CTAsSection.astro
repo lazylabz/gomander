@@ -4,7 +4,9 @@ import CTAsSubtitle from "./components/CTAsSubtitle.astro";
 import CTAsDownloadButton from "./components/CTAsDownloadButton.astro";
 import CTAsGithub from "./components/CTAsGithub.astro";
 import CTAsDocumentation from "./components/CTAsDocumentation.astro";
+import TrustCheckItem from "./components/TrustCheckItem.astro";
 ---
+
 <section class="py-20 gradient-bg relative overflow-hidden">
     <div class="absolute inset-0 bg-black opacity-20"></div>
     <div class="container mx-auto px-6 relative z-10 text-center">
@@ -22,26 +24,10 @@ import CTAsDocumentation from "./components/CTAsDocumentation.astro";
             <CTAsDocumentation />
         </div>
 
-        <!-- Trust indicators -->
         <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-8 text-gray-200">
-            <div class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span>100% Open Source</span>
-            </div>
-            <div class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span>No Data Collection</span>
-            </div>
-            <div class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span>Instant Setup</span>
-            </div>
+            <TrustCheckItem text="100% Open Source" />
+            <TrustCheckItem text="No Data Collection" />
+            <TrustCheckItem text="Instant Setup" />
         </div>
     </div>
 </section>

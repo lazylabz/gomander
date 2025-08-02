@@ -1,0 +1,13 @@
+---
+import TrustCheckIcon from "../icons/TrustCheckIcon.astro";
+interface Props {
+    text: string;
+}
+
+const { text } = Astro.props;
+---
+
+<div class="flex items-center gap-2">
+    <TrustCheckIcon />
+    <span>{text}</span>
+</div>
