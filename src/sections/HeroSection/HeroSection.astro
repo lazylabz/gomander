@@ -4,6 +4,7 @@ import HeroTitle from "./components/HeroTitle.astro";
 import HeroDescription from "./components/HeroDescription.astro";
 import DownloadCTA from "./components/DownloadCTA.astro";
 import GithubCTA from "./components/GithubCTA.astro";
+import ChecklistItem from "./components/ChecklistItem.astro";
 ---
 <section class="hero-gradient relative overflow-hidden min-h-screen flex items-center">
     <!-- Floating background elements -->
@@ -25,20 +26,10 @@ import GithubCTA from "./components/GithubCTA.astro";
                     <GithubCTA />
                 </div>
 
-                <!-- Social Proof -->
                 <div class="flex items-center gap-6 text-sm text-gray-400">
-                    <div class="flex items-center gap-2">
-                        <span class="text-green-400">✓</span>
-                        Cross-platform
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <span class="text-green-400">✓</span>
-                        Open Source
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <span class="text-green-400">✓</span>
-                        Zero Config
-                    </div>
+                    <ChecklistItem text="Cross-platform" />
+                    <ChecklistItem text="Open Source" />
+                    <ChecklistItem text="Zero Config" />
                 </div>
             </div>
 
