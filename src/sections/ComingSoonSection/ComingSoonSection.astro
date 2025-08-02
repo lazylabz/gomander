@@ -1,3 +1,6 @@
+---
+import ComingSoonCard from "./components/ComingSoonCard.astro";
+---
 <section class="py-20 bg-white">
     <div class="container mx-auto px-6">
         <div class="text-center mb-16">
@@ -6,41 +9,47 @@
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-200">
-                <div class="text-2xl mb-3">⌨️</div>
-                <h3 class="font-semibold text-gray-900 mb-2">Keyboard Shortcuts</h3>
-                <p class="text-gray-600 text-sm">Complete keyboard navigation for power users</p>
-            </div>
+            <ComingSoonCard
+                variant="blue"
+                icon="⌨️"
+                title="Keyboard Shortcuts"
+                description="Complete keyboard navigation for power users"
+            />
 
-            <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-xl border border-purple-200">
-                <div class="text-2xl mb-3">🌙</div>
-                <h3 class="font-semibold text-gray-900 mb-2">Dark Mode</h3>
-                <p class="text-gray-600 text-sm">Easy on the eyes for those late coding sessions</p>
-            </div>
+            <ComingSoonCard
+                variant="purple"
+                icon="🌙"
+                title="Dark Mode"
+                description="Easy on the eyes for those late coding sessions"
+            />
 
-            <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl border border-green-200">
-                <div class="text-2xl mb-3">🚀</div>
-                <h3 class="font-semibold text-gray-900 mb-2">Quick Launcher</h3>
-                <p class="text-gray-600 text-sm">⌘+K to access any action instantly</p>
-            </div>
+            <ComingSoonCard
+                variant="green"
+                icon="🚀"
+                title="Quick Launcher"
+                description="⌘+K to access any action instantly"
+            />
 
-            <div class="bg-gradient-to-br from-orange-50 to-red-50 p-6 rounded-xl border border-orange-200">
-                <div class="text-2xl mb-3">📦</div>
-                <h3 class="font-semibold text-gray-900 mb-2">Package.json Import</h3>
-                <p class="text-gray-600 text-sm">Automatically import npm scripts</p>
-            </div>
+            <ComingSoonCard
+                variant="orange"
+                icon="📦"
+                title="Package.json Import"
+                description="Automatically import npm scripts"
+            />
 
-            <div class="bg-gradient-to-br from-yellow-50 to-orange-50 p-6 rounded-xl border border-yellow-200">
-                <div class="text-2xl mb-3">🌍</div>
-                <h3 class="font-semibold text-gray-900 mb-2">Internationalization</h3>
-                <p class="text-gray-600 text-sm">English and Spanish support</p>
-            </div>
+            <ComingSoonCard
+                variant="yellow"
+                icon="🌍"
+                title="Internationalization"
+                description="English and Spanish support"
+            />
 
-            <div class="bg-gradient-to-br from-gray-50 to-slate-50 p-6 rounded-xl border border-gray-200">
-                <div class="text-2xl mb-3">✨</div>
-                <h3 class="font-semibold text-gray-900 mb-2">Much More</h3>
-                <p class="text-gray-600 text-sm">We're listening to the community!</p>
-            </div>
+            <ComingSoonCard
+                variant="gray"
+                icon="✨"
+                title="Much More"
+                description="We're listening to the community!"
+            />
         </div>
     </div>
 </section>
