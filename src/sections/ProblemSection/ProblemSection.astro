@@ -1,3 +1,6 @@
+---
+import ProblemCard from "./components/ProblemCard.astro";
+---
 <section class="py-20 bg-white">
     <div class="container mx-auto px-6">
         <div class="text-center mb-16">
@@ -6,29 +9,10 @@
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            <div class="problem-card p-6 rounded-lg">
-                <div class="text-3xl mb-4">🖥️</div>
-                <h3 class="font-semibold text-gray-900 mb-2">10+ Terminal Windows</h3>
-                <p class="text-gray-700 text-sm">Your desktop becomes a maze of terminal tabs</p>
-            </div>
-
-            <div class="problem-card p-6 rounded-lg">
-                <div class="text-3xl mb-4">😵</div>
-                <h3 class="font-semibold text-gray-900 mb-2">Lost in the Chaos</h3>
-                <p class="text-gray-700 text-sm">Which process crashed? Where's that error?</p>
-            </div>
-
-            <div class="problem-card p-6 rounded-lg">
-                <div class="text-3xl mb-4">⏰</div>
-                <h3 class="font-semibold text-gray-900 mb-2">Slow Team Onboarding</h3>
-                <p class="text-gray-700 text-sm">New devs spend hours figuring out what to run</p>
-            </div>
-
-            <div class="problem-card p-6 rounded-lg">
-                <div class="text-3xl mb-4">🔄</div>
-                <h3 class="font-semibold text-gray-900 mb-2">Repetitive Setup</h3>
-                <p class="text-gray-700 text-sm">Same commands, every single day</p>
-            </div>
+            <ProblemCard icon="🖥️" title="10+ Terminal Windows" description="Your desktop becomes a maze of terminal tabs" />
+            <ProblemCard icon="😵" title="Lost in the Chaos" description="Which process crashed? Where's that error?" />
+            <ProblemCard icon="⏰" title="Slow Team Onboarding" description="New devs spend hours figuring out what to run" />
+            <ProblemCard icon="🔄" title="Repetitive Setup" description="Same commands, every single day" />
         </div>
 
         <div class="text-center">
