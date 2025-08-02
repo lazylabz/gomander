@@ -1,0 +1,15 @@
+<div class="absolute inset-0 overflow-hidden">
+    <div class="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full opacity-20 float"></div>
+    <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-500 rounded-full opacity-20 float" style="animation-delay: -2s;"></div>
+</div>
+
+<style>
+    .float {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+    }
+</style>

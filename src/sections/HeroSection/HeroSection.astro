@@ -7,13 +7,10 @@ import GithubCTA from "./components/GithubCTA.astro";
 import ChecklistItem from "./components/ChecklistItem.astro";
 import TerminalMockup from "./components/TerminalMockup.astro";
 import ScrollIndicator from "./components/ScrollIndicator.astro";
+import FloatingBubbles from "./components/FloatingBubbles.astro";
 ---
 <section class="hero-gradient relative overflow-hidden min-h-screen flex items-center">
-    <!-- Floating background elements -->
-    <div class="absolute inset-0 overflow-hidden">
-        <div class="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full opacity-20 float"></div>
-        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-500 rounded-full opacity-20 float" style="animation-delay: -2s;"></div>
-    </div>
+    <FloatingBubbles />
 
     <div class="container mx-auto px-6 relative z-10">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -44,14 +41,5 @@ import ScrollIndicator from "./components/ScrollIndicator.astro";
 <style>
     .hero-gradient {
         background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
-    }
-
-    .float {
-        animation: float 6s ease-in-out infinite;
-    }
-
-    @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-20px); }
     }
 </style>
