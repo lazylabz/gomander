@@ -1,25 +1,27 @@
+---
+import FeaturesTitle from "./components/FeaturesTitle.astro";
+import FeaturesSubtitle from "./components/FeaturesSubtitle.astro";
+import ProjectsFeatureIcon from "./icons/ProjectsFeatureIcon.astro";
+import FeatureCard from "./components/FeatureCard.astro";
+---
 <!-- Features Section -->
 <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
     <div class="container mx-auto px-6">
         <div class="text-center mb-16">
-            <h2 class="text-4xl font-bold text-gray-900 mb-6">One Interface. All Your Commands.</h2>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto">Gomander transforms chaos into control with powerful features designed for modern development workflows.</p>
+            <FeaturesTitle />
+            <FeaturesSubtitle />
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="feature-card p-8 rounded-xl">
-                <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mb-6">
-                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"></path>
-                    </svg>
-                </div>
-                <h3 class="text-xl font-semibold text-gray-900 mb-4">Project Organization</h3>
-                <p class="text-gray-600 mb-4">Manage multiple projects with their own commands and configurations. Perfect for developers juggling different codebases.</p>
-                <ul class="text-sm text-gray-500 space-y-1">
-                    <li>• Custom working directories</li>
-                    <li>• Import/export projects</li>
-                </ul>
-            </div>
+            <FeatureCard
+                icon="Projects"
+                title="Project Organization"
+                description="Manage multiple projects with their own commands and configurations. Perfect for developers juggling different codebases."
+                features={[
+                    "Custom working directories",
+                    "Import/export projects"
+                ]}
+            />
 
             <div class="feature-card p-8 rounded-xl">
                 <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center mb-6">
@@ -97,17 +99,3 @@
         </div>
     </div>
 </section>
-
-<style>
-    .feature-card {
-        transition: all 0.3s ease;
-        border: 1px solid #e2e8f0;
-        background: white;
-    }
-
-    .feature-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        border-color: #667eea;
-    }
-</style>

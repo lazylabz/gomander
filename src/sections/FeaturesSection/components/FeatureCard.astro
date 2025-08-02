@@ -1,0 +1,45 @@
+---
+import ProjectsFeatureIcon from '../icons/ProjectsFeatureIcon.astro';
+
+// type Icon = 'Projects' | 'CommandGroups' | 'RealTime' | 'Configuration' | 'CrossPlatform' | 'ZeroLearningCurve';
+type Icon = 'Projects';
+
+const iconsMap = {
+    Projects: ProjectsFeatureIcon,
+} as const;
+
+interface Props {
+    icon: Icon;
+    title: string;
+    description: string;
+    features: string[];
+}
+
+const { icon, title, description, features } = Astro.props;
+const IconComponent = iconsMap[icon];
+---
+
+<div class="feature-card p-8 rounded-xl">
+    <IconComponent />
+    <h3 class="text-xl font-semibold text-gray-900 mb-4">{title}</h3>
+    <p class="text-gray-600 mb-4">{description}</p>
+    <ul class="text-sm text-gray-500 space-y-1">
+        {features.map(feature => (
+            <li>• {feature}</li>
+        ))}
+    </ul>
+</div>
+
+<style>
+    .feature-card {
+        transition: all 0.3s ease;
+        border: 1px solid #e2e8f0;
+        background: white;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        border-color: #667eea;
+    }
+</style>
