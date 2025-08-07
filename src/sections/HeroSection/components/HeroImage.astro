@@ -1,0 +1,25 @@
+<div class="relative flex justify-center items-center">
+        <!-- Glow effect behind the image -->
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full blur-3xl opacity-30 scale-110"></div>
+
+        <img
+            src="/gomander.png"
+            alt="Gomander - Command Management Tool"
+            class="relative z-10 size-96 object-contain drop-shadow-2xl float"
+        />
+
+        <!-- Small floating bubbles -->
+        <div class="absolute -top-8 -right-8 w-16 h-16 bg-yellow-400 rounded-full opacity-20 float" style="animation-delay: -1s;"></div>
+        <div class="absolute -bottom-12 -left-12 w-20 h-20 bg-green-400 rounded-full opacity-15 float" style="animation-delay: -3s;"></div>
+</div>
+
+<style>
+    .float {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+    }
+</style>
