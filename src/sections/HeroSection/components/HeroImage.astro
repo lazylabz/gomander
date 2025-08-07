@@ -1,9 +1,14 @@
+---
+import { Image } from 'astro:assets';
+import logoImage from '../../../assets/gomander.png'
+---
+
 <div class="relative flex justify-center items-center">
         <!-- Glow effect behind the image -->
         <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full blur-3xl opacity-30 scale-110"></div>
 
-        <img
-            src="/images/gomander.png"
+        <Image
+            src={logoImage}
             alt="Gomander - Command Management Tool"
             class="relative z-10 size-96 object-contain drop-shadow-2xl float"
         />
