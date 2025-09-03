@@ -1,15 +1,49 @@
 ---
 import '../styles/global.css'
+
+export interface Props {
+	title?: string;
+	description?: string;
+	ogImage?: string;
+	noIndex?: boolean;
+}
+
+const {
+	title = "Gomander - Command Your Development Workflow | Open Source GUI Tool",
+	description = "Stop juggling multiple terminal windows! Launch, monitor, and organize multiple commands simultaneously. Built for developers, by developers.",
+	ogImage = "/gomander/og-image.png",
+	noIndex = false,
+} = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+const imageURL = new URL(ogImage, Astro.site).href; // TODO: Add og:image meta tags
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
+		<!-- Primary Meta Tags -->
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" href="/gomander/favicon.ico" type="image/x-icon" />
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+		<meta name="author" content="Lazy Labz" />
+		<meta name="keyword" content="command management, GUI tool, developer productivity, developer tools, terminal manager, open source, microservices, workflow automation, developer experience" />
+		<link rel="canonical" href={canonicalUrl} />
+		{noIndex && <meta name="robots" content="noindex,nofollow" />}
+
+		<!-- Favicon -->
+		<link rel="icon" type="image/x-icon" href="/gomander/favicon.ico" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/gomander/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/gomander/favicon-16x16.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/gomander/apple-touch-icon.png" />
+		<link rel="manifest" href="/gomander/site.webmanifest" />
+
+		<!-- Additional meta tags -->
+		<meta name="theme-color" content="#000000" />
+		<meta name="application-name" content="Gomander" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Gomander - Command Your Development Workflow</title>
 	</head>
 	<body class="bg-gray-50">
 		<slot />
