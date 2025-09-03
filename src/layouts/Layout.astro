@@ -33,6 +33,10 @@ const imageURL = new URL(ogImage, Astro.site).href;
 		<link rel="canonical" href={canonicalUrl} />
 		{noIndex && <meta name="robots" content="noindex,nofollow" />}
 
+		<!-- Preconnect to external domains -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
 		<!-- Favicon -->
 		<link rel="icon" type="image/x-icon" href="/gomander/favicon.ico" />
 		<link rel="icon" type="image/png" sizes="32x32" href="/gomander/favicon-32x32.png" />
