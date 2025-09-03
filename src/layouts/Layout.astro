@@ -16,7 +16,7 @@ const {
 } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
-const imageURL = new URL(ogImage, Astro.site).href; // TODO: Add og:image meta tags
+const imageURL = new URL(ogImage, Astro.site).href;
 ---
 
 <!doctype html>
@@ -39,6 +39,24 @@ const imageURL = new URL(ogImage, Astro.site).href; // TODO: Add og:image meta t
 		<link rel="icon" type="image/png" sizes="16x16" href="/gomander/favicon-16x16.png" />
 		<link rel="apple-touch-icon" sizes="180x180" href="/gomander/apple-touch-icon.png" />
 		<link rel="manifest" href="/gomander/site.webmanifest" />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={imageURL} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:site_name" content="Gomander" />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonicalUrl} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={imageURL} />
+		<meta property="twitter:creator" content="@noeldev_" />
 
 		<!-- Additional meta tags -->
 		<meta name="theme-color" content="#000000" />
