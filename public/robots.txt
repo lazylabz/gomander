@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /_astro/
+Sitemap: https://lazylabz.github.io/gomander/sitemap-index.xml
+
+User-agent: ia_archiver
+Disallow: /
