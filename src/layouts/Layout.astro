@@ -1,15 +1,97 @@
 ---
 import '../styles/global.css'
+
+export interface Props {
+	title?: string;
+	description?: string;
+	ogImage?: string;
+	noIndex?: boolean;
+}
+
+const {
+	title = "Gomander - Command Your Development Workflow | Open Source GUI Tool",
+	description = "Stop juggling multiple terminal windows! Launch, monitor, and organize multiple commands simultaneously. Built for developers, by developers.",
+	ogImage = "/gomander/og-image.png",
+	noIndex = false,
+} = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+const imageURL = new URL(ogImage, Astro.site).href;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
+		<!-- Primary Meta Tags -->
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+		<meta name="author" content="Lazy Labz" />
+		<meta name="keywords" content="command management, GUI tool, developer productivity, developer tools, terminal manager, open source, microservices, workflow automation, developer experience" />
+		<link rel="canonical" href={canonicalUrl} />
+		{noIndex && <meta name="robots" content="noindex,nofollow" />}
+
+		<!-- Preconnect to external domains -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+		<!-- Favicon -->
+		<link rel="icon" type="image/x-icon" href="/gomander/favicon.ico" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/gomander/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/gomander/favicon-16x16.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/gomander/apple-touch-icon.png" />
+		<link rel="manifest" href="/gomander/site.webmanifest" />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={imageURL} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:site_name" content="Gomander" />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonicalUrl} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={imageURL} />
+		<meta property="twitter:creator" content="@noeldev_" />
+
+		<!-- Additional meta tags -->
+		<meta name="theme-color" content="#000000" />
+		<meta name="application-name" content="Gomander" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Gomander - Command Your Development Workflow</title>
+
+		<!-- Schema.org structured data -->
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "SoftwareApplication",
+			"name": "Gomander",
+			"description": "Open-source GUI application for launching, monitoring, and organizing multiple commands simultaneously. Perfect for developers managing microservices, monorepos, and complex development environments.",
+			"url": "https://lazylabz.github.io/gomander",
+			"applicationCategory": "DeveloperApplication",
+			"operatingSystem": ["Windows", "macOS", "Linux"],
+			"softwareVersion": "1.0",
+			"author": {
+				"@type": "Organization",
+				"name": "Lazy Labz",
+				"url": "https://lazylabz.github.io/"
+			},
+			"downloadUrl": "https://github.com/lazylabz/gomander-app/releases/latest",
+			"license": "https://www.gnu.org/licenses/gpl-3.0.html",
+			"programmingLanguage": ["Go", "React", "TypeScript"],
+			"screenshot": imageURL,
+			"offers": {
+				"@type": "Offer",
+				"price": "0",
+				"priceCurrency": "USD"
+			}
+		})} />
 	</head>
 	<body class="bg-gray-50">
 		<slot />
