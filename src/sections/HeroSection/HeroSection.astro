@@ -1,6 +1,5 @@
 ---
 import VersionPill from "./components/VersionPill.astro";
-import HeroTitle from "./components/HeroTitle.astro";
 import HeroDescription from "./components/HeroDescription.astro";
 import DownloadCTA from "./components/DownloadCTA.astro";
 import GithubCTA from "./components/GithubCTA.astro";
@@ -10,32 +9,41 @@ import FloatingBubbles from "./components/FloatingBubbles.astro";
 import HeroImage from "./components/HeroImage.astro";
 ---
 <section class="hero-gradient relative overflow-hidden min-h-screen flex items-center">
-    <FloatingBubbles />
+    <FloatingBubbles/>
 
     <div class="container mx-auto px-6 pt-6 sm:pt-0 relative z-10">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
             <div class="text-white">
-                <VersionPill />
-                <HeroTitle />
-                <HeroDescription />
+                <div class="flex items-center gap-4 mb-6">
+                    <h1 class="text-lg font-medium text-white">Gomander</h1>
+                    <VersionPill/>
+                </div>
+                <h2 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+                    Command Your
+                    <span class="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+                        Development
+                    </span>
+                    Workflow
+                </h2>
+                <HeroDescription/>
 
                 <div class="flex flex-col sm:flex-row gap-4 mb-8">
-                    <DownloadCTA />
-                    <GithubCTA />
+                    <DownloadCTA/>
+                    <GithubCTA/>
                 </div>
 
                 <div class="flex items-center gap-6 text-sm text-gray-400">
-                    <ChecklistItem text="Cross-platform" />
-                    <ChecklistItem text="Open Source" />
-                    <ChecklistItem text="Zero Config" />
+                    <ChecklistItem text="Cross-platform"/>
+                    <ChecklistItem text="Open Source"/>
+                    <ChecklistItem text="Zero Config"/>
                 </div>
             </div>
 
-            <HeroImage />
+            <HeroImage/>
         </div>
     </div>
 
-    <ScrollIndicator />
+    <ScrollIndicator/>
 </section>
 
 <style>
