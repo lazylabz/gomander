@@ -1,0 +1,229 @@
+---
+const procs = [
+  { n: 'api-server', c: 'go run ./cmd/api', s: 'running', ms: '12ms' },
+  { n: 'web', c: 'pnpm dev', s: 'running', ms: '3.4s' },
+  { n: 'worker', c: 'go run ./cmd/worker', s: 'running', ms: '8ms' },
+  { n: 'postgres', c: 'docker compose up db', s: 'running', ms: '—' },
+  { n: 'migrate', c: 'make migrate', s: 'done', ms: '—' },
+  { n: 'tests', c: 'go test ./...', s: 'idle', ms: '—' },
+];
+
+const logLines = [
+  { t: '14:22:01', p: 'api', cls: 'log-accent', m: 'listening on :8080' },
+  { t: '14:22:01', p: 'web', cls: 'log-purple', m: 'VITE v5.2.0  ready in 412 ms' },
+  { t: '14:22:02', p: 'web', cls: 'log-purple', m: '➜  Local:   http://localhost:5173/' },
+  { t: '14:22:03', p: 'api', cls: 'log-accent', m: 'GET /healthz 200 2.1ms' },
+  { t: '14:22:04', p: 'worker', cls: 'log-yellow', m: 'job queue empty, sleeping' },
+  { t: '14:22:06', p: 'api', cls: 'log-accent', m: 'POST /auth/login 200 18ms' },
+  { t: '14:22:07', p: 'web', cls: 'log-purple', m: 'hmr update /src/app.tsx' },
+  { t: '14:22:09', p: 'postgres', cls: 'log-green', m: 'LOG: checkpoint starting' },
+  { t: '14:22:11', p: 'api', cls: 'log-accent', m: 'GET /users/42 200 4.3ms' },
+];
+
+const statusClass = (s: string) => s === 'running' ? 'status-running' : s === 'done' ? 'status-done' : 'status-idle';
+---
+
+<div class="gui">
+  <!-- Title bar -->
+  <div class="titlebar">
+    <div class="traffic-lights">
+      <div class="dot dot-red"></div>
+      <div class="dot dot-yellow"></div>
+      <div class="dot dot-green"></div>
+    </div>
+    <div class="titlebar-text">GOMANDER — ~/projects/nebula</div>
+    <div class="titlebar-ver">v0.4.2</div>
+  </div>
+
+  <!-- Main area: sidebar + content -->
+  <div class="main-area">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-header">PROJECTS</div>
+      {['nebula', 'cms', 'landing', 'docs-site'].map((p, i) => (
+        <div class={`sidebar-item${i === 0 ? ' sidebar-item--active' : ''}`}>{p}</div>
+      ))}
+      <div class="sidebar-header sidebar-header--groups">GROUPS</div>
+      {['full-stack', 'backend only', 'tests'].map((g, i) => (
+        <div class="sidebar-group">
+          <span class={i === 0 ? 'group-arrow group-arrow--active' : 'group-arrow'}>▸</span>
+          {g}
+        </div>
+      ))}
+    </div>
+
+    <!-- Content: process table + logs -->
+    <div class="content-area">
+      <!-- Process table -->
+      <div class="proc-table">
+        <div class="proc-header">
+          <span>NAME</span>
+          <span>COMMAND</span>
+          <span>STATUS</span>
+          <span>TIME</span>
+        </div>
+        {procs.map(p => (
+          <div class="proc-row">
+            <span class="proc-name">{p.n}</span>
+            <span class="proc-cmd">{p.c}</span>
+            <span class={`proc-status ${statusClass(p.s)}`}>● {p.s}</span>
+            <span class="proc-time">{p.ms}</span>
+          </div>
+        ))}
+      </div>
+
+      <!-- Log stream -->
+      <div class="log-area">
+        {logLines.map(l => (
+          <div class="log-line">
+            <span class="log-time">{l.t}</span>
+            {' '}
+            <span class={`log-proc ${l.cls}`}>[{l.p}]</span>
+            {' '}
+            <span class="log-msg">{l.m}</span>
+          </div>
+        ))}
+        <div class="log-cursor">▊</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .gui {
+    background: var(--bg2);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 11px;
+    box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Titlebar */
+  .titlebar {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg2);
+    gap: 8px;
+  }
+  .traffic-lights {
+    display: flex;
+    gap: 6px;
+  }
+  .dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+  }
+  .dot-red { background: #ff5f57; }
+  .dot-yellow { background: #febc2e; }
+  .dot-green { background: #28c840; }
+  .titlebar-text {
+    flex: 1;
+    text-align: center;
+    font-size: 10px;
+    color: var(--dim);
+    letter-spacing: 1px;
+  }
+  .titlebar-ver {
+    font-size: 10px;
+    color: var(--dim);
+  }
+
+  /* Main layout */
+  .main-area {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    min-height: 280px;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    border-right: 1px solid var(--line);
+    background: var(--bg2);
+    padding: 10px 0;
+  }
+  .sidebar-header {
+    padding: 4px 12px;
+    font-size: 9px;
+    color: var(--dim);
+    letter-spacing: 1.5px;
+  }
+  .sidebar-header--groups {
+    padding-top: 12px;
+  }
+  .sidebar-item {
+    padding: 5px 12px;
+    font-size: 11px;
+    color: var(--dim);
+    border-left: 2px solid transparent;
+  }
+  .sidebar-item--active {
+    color: var(--text);
+    border-left-color: var(--accent);
+    background: var(--line);
+  }
+  .sidebar-group {
+    padding: 5px 12px;
+    font-size: 11px;
+    color: var(--dim);
+  }
+  .group-arrow { margin-right: 6px; color: var(--dim); }
+  .group-arrow--active { color: var(--accent); }
+
+  /* Content */
+  .content-area {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    overflow: hidden;
+  }
+
+  /* Process table */
+  .proc-table {
+    padding: 10px;
+    border-bottom: 1px solid var(--line);
+  }
+  .proc-header {
+    display: grid;
+    grid-template-columns: 110px 1fr 70px 50px;
+    gap: 8px;
+    font-size: 9px;
+    color: var(--dim);
+    letter-spacing: 1.5px;
+    padding: 0 6px 6px;
+  }
+  .proc-row {
+    display: grid;
+    grid-template-columns: 110px 1fr 70px 50px;
+    gap: 8px;
+    font-size: 11px;
+    padding: 4px 6px;
+    align-items: center;
+  }
+  .proc-name { color: var(--text); }
+  .proc-cmd { color: var(--dim); }
+  .proc-time { color: var(--dim); }
+  .proc-status { font-size: 10px; }
+  .status-running { color: var(--accent); }
+  .status-done { color: #7ad28e; }
+  .status-idle { color: var(--dim); }
+
+  /* Log area */
+  .log-area {
+    background: var(--bg);
+    padding: 10px;
+    font-size: 10.5px;
+    line-height: 1.6;
+    overflow: hidden;
+  }
+  .log-time { color: var(--dim); }
+  .log-msg { color: var(--text); }
+  .log-accent { color: var(--accent); }
+  .log-purple { color: var(--purple); }
+  .log-yellow { color: #e8c56c; }
+  .log-green { color: #7ad28e; }
+  .log-cursor { color: var(--accent); }
+</style>

@@ -1,0 +1,28 @@
+---
+interface Props {
+  label: string;
+}
+const { label } = Astro.props;
+---
+<div class="rule">
+  <span>───</span>
+  <span>{label}</span>
+  <span class="rule-line"></span>
+</div>
+
+<style>
+  .rule {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 60px 0 24px;
+    font-size: 11px;
+    color: var(--dim);
+    letter-spacing: 1px;
+  }
+  .rule-line {
+    flex: 1;
+    border-top: 1px dashed var(--dim);
+    opacity: 0.4;
+  }
+</style>

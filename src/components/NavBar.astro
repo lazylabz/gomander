@@ -1,0 +1,128 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+import { VERSION, URLS } from '../data/content';
+---
+<nav>
+  <div class="nav-inner">
+    <!-- Brand -->
+    <a href="#" class="brand">
+      <span class="brand-cursor">▊</span>
+      <span class="brand-name">GOMANDER</span>
+      <span class="brand-version">v{VERSION}</span>
+    </a>
+
+    <!-- Center links (hidden on mobile) -->
+    <div class="nav-links">
+      <a href="#features">./features</a>
+      <a href="#roadmap">./roadmap</a>
+      <a href={URLS.repo} target="_blank" rel="noopener">./github</a>
+      <a href={URLS.discussions} target="_blank" rel="noopener">./discussions</a>
+    </div>
+
+    <!-- Right actions -->
+    <div class="nav-actions">
+      <ThemeToggle />
+      <a href={URLS.releases} target="_blank" rel="noopener" class="dl-btn">$ download</a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: var(--nav-bg);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    padding: 16px 24px;
+    gap: 20px;
+  }
+
+  @media (min-width: 1024px) {
+    .nav-inner {
+      padding: 16px 56px;
+    }
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .brand-cursor {
+    color: var(--accent);
+    font-size: 14px;
+  }
+
+  .brand-name {
+    letter-spacing: 2px;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--text);
+  }
+
+  .brand-version {
+    color: var(--dim);
+    font-size: 10px;
+  }
+
+  .nav-links {
+    display: none;
+    flex: 1;
+    justify-content: center;
+    gap: 28px;
+    color: var(--dim);
+    font-size: 11px;
+  }
+
+  @media (min-width: 768px) {
+    .nav-links {
+      display: flex;
+    }
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .nav-links a:hover {
+    color: var(--text);
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
+  }
+
+  .dl-btn {
+    background: var(--accent);
+    color: var(--accent-ink);
+    border: none;
+    padding: 7px 14px;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: opacity 0.15s;
+  }
+
+  .dl-btn:hover {
+    opacity: 0.85;
+  }
+</style>

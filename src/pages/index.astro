@@ -1,21 +1,23 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import HeroSection from "../sections/HeroSection/HeroSection.astro";
-import ProblemSection from "../sections/ProblemSection/ProblemSection.astro";
-import FeaturesSection from "../sections/FeaturesSection/FeaturesSection.astro";
-import ComingSoonSection from "../sections/ComingSoonSection/ComingSoonSection.astro";
-import CtAsSection from "../sections/CTAsSection/CTAsSection.astro";
-import FooterSection from "../sections/FooterSection/FooterSection.astro";
+import NavBar from '../components/NavBar.astro';
+import HeroSection from '../sections/HeroSection/HeroSection.astro';
+import PreviewSection from '../sections/PreviewSection/PreviewSection.astro';
+import PainsSection from '../sections/PainsSection/PainsSection.astro';
+import FeaturesSection from '../sections/FeaturesSection/FeaturesSection.astro';
+import InstallSection from '../sections/InstallSection/InstallSection.astro';
+import FooterSection from '../sections/FooterSection/FooterSection.astro';
 ---
 
 <Layout
-	title="Gomander - Command Your Development Workflow | Open Source GUI Tool"
-	description="Stop juggling multiple terminal windows! Launch, monitor, and organize multiple commands simultaneously. Perfect for developers managing microservices, monorepos, and complex development environments. Download free for Windows, macOS, and Linux."
+  title="Gomander - Command Your Development Workflow | Open Source GUI Tool"
+  description="Stop juggling multiple terminal windows! Launch, monitor, and organize multiple commands simultaneously. Perfect for developers managing microservices, monorepos, and complex development environments. Download free for Windows, macOS, and Linux."
 >
-	<HeroSection/>
-	<ProblemSection />
-	<FeaturesSection />
-	<ComingSoonSection />
-	<CtAsSection />
-	<FooterSection />
+  <NavBar />
+  <HeroSection />
+  <PreviewSection />
+  <PainsSection />
+  <FeaturesSection />
+  <InstallSection />
+  <FooterSection />
 </Layout>

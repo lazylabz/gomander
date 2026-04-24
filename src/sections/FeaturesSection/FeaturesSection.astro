@@ -1,80 +1,107 @@
 ---
-import FeaturesTitle from "./components/FeaturesTitle.astro";
-import FeaturesSubtitle from "./components/FeaturesSubtitle.astro";
-import FeatureCard from "./components/FeatureCard.astro";
+import Rule from '../../components/Rule.astro';
+import { FEATURES } from '../../data/content';
 ---
-<!-- Features Section -->
-<section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-            <FeaturesTitle />
-            <FeaturesSubtitle />
+<section id="features" class="section">
+  <Rule label="$ ls ./features/" />
+
+  <h2 class="section-heading">
+    One interface.<br />
+    <span class="dim-text">All your commands.</span>
+  </h2>
+
+  <div class="grid">
+    {FEATURES.map((f, i) => (
+      <div class="card">
+        <div class="card-meta">
+          <span class="card-icon">{f.icon}</span>
+          <span class="card-num">0{i + 1}</span>
         </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <FeatureCard
-                icon="Projects"
-                title="Project Organization"
-                description="Manage multiple projects with their own commands and configurations. Perfect for developers juggling different codebases."
-                features={[
-                    "Custom working directories",
-                    "Import/export projects"
-                ]}
-            />
-
-            <FeatureCard
-                icon="CommandGroups"
-                title="Command Groups"
-                description="Group related commands and launch them together. Start your entire development stack with one click."
-                features={[
-                    "One-click group execution",
-                    "Visual status tracking",
-                    "Flexible organization"
-                ]}
-            />
-
-            <FeatureCard
-                icon="RealTime"
-                title="Real-time Monitoring"
-                description="Watch all your processes in real-time. See logs, errors, and status updates in a clean, organized interface."
-                features={[
-                    "Live output streaming",
-                    "Colored terminal output",
-                    "Searchable command logs"
-                ]}
-            />
-
-            <FeatureCard
-                icon="Configuration"
-                title="Smart Configuration"
-                description="Handle complex PATH requirements, nvm, pyenv, and other version managers with ease."
-                features={[
-                    "Custom environment paths",
-                    "Per-project settings"
-                ]}
-            />
-
-            <FeatureCard
-                icon="CrossPlatform"
-                title="Cross-platform"
-                description="Works seamlessly on Windows, macOS, and Linux. One tool for your entire team, regardless of their OS."
-                features={[
-                    "Native performance",
-                    "Platform-specific optimizations",
-                    "Consistent experience"
-                ]}
-            />
-
-            <FeatureCard
-                icon="ZeroLearningCurve"
-                title="Zero Learning Curve"
-                description="Intuitive interface that feels familiar from day one. Start organizing your commands in minutes, not hours."
-                features={[
-                    "Drag and drop interface",
-                    "Clean, minimal UI",
-                    "Dark/Light theme support"
-                ]}
-            />
-        </div>
-    </div>
+        <div class="card-title">{f.title}</div>
+        <div class="card-body">{f.body}</div>
+      </div>
+    ))}
+  </div>
 </section>
+
+<style>
+  .section {
+    padding: 0 24px 40px;
+  }
+
+  @media (min-width: 1024px) {
+    .section {
+      padding: 0 56px 40px;
+    }
+  }
+
+  .section-heading {
+    font-size: 36px;
+    letter-spacing: -1px;
+    margin: 0 0 56px;
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--text);
+  }
+
+  .dim-text {
+    color: var(--dim);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    background-color: var(--line);
+    border: 1px solid var(--line);
+  }
+
+  @media (min-width: 768px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .card {
+    background: var(--bg);
+    padding: 28px 24px;
+    min-height: 180px;
+  }
+
+  .card-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .card-icon {
+    color: var(--accent);
+    font-size: 18px;
+  }
+
+  .card-num {
+    color: var(--dim);
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  .card-title {
+    font-size: 15px;
+    color: var(--text);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  .card-body {
+    font-size: 12px;
+    color: var(--dim);
+    line-height: 1.65;
+  }
+</style>

@@ -1,0 +1,34 @@
+---
+---
+<button id="theme-toggle" aria-label="Toggle theme" title="Toggle dark/light theme">
+  <span class="sun-icon">☀</span>
+  <span class="moon-icon">☾</span>
+</button>
+
+<script>
+  const btn = document.getElementById('theme-toggle');
+  btn?.addEventListener('click', () => {
+    const html = document.documentElement;
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    try { localStorage.setItem('gomander-theme', next); } catch (_) {}
+  });
+</script>
+
+<style>
+  button {
+    background: transparent;
+    border: 1px solid var(--line-strong);
+    color: var(--dim);
+    padding: 5px 10px;
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+    line-height: 1;
+  }
+  button:hover {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+</style>

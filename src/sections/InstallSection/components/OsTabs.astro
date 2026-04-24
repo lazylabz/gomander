@@ -1,0 +1,244 @@
+---
+import { URLS, DOWNLOADS, downloadUrl } from '../../../data/content';
+
+const osList = ['macOS', 'Linux', 'Windows'] as const;
+---
+<div class="os-tabs-wrapper">
+  <!-- Tab strip -->
+  <div class="tab-strip">
+    {osList.map((os, i) => (
+      <button class={`tab-btn${i === 0 ? ' active' : ''}`} data-os={os} type="button">
+        {os}
+      </button>
+    ))}
+  </div>
+
+  <!-- Per-OS download pairs -->
+  {osList.map((os, i) => (
+    <div class={`os-panel${i === 0 ? ' active' : ''}`} data-os-panel={os}>
+      {DOWNLOADS[os].map(d => (
+        <a
+          href={downloadUrl(d.file)}
+          target="_blank"
+          rel="noopener"
+          class="dl-row"
+        >
+          <span class="dl-prompt">$</span>
+          <span class="dl-file">{d.file}</span>
+          <span class="dl-arch">// {d.arch}</span>
+          <span class="dl-arrow">↓</span>
+        </a>
+      ))}
+    </div>
+  ))}
+
+  <!-- macOS-only notice, outside the panel box -->
+  <div class="macos-notice" id="macos-notice">
+    <p class="notice-text">
+      If macOS says &ldquo;App is damaged&rdquo;, run this command&nbsp;<a
+        href="https://github.com/lazylabz/gomander-app#macos-users---important-notice"
+        target="_blank"
+        rel="noopener"
+        class="notice-info"
+        title="More info"
+      >ⓘ</a>
+    </p>
+    <div class="notice-cmd">
+      <code class="notice-code">sudo xattr -d com.apple.quarantine /Applications/gomander.app</code>
+      <button class="copy-btn" type="button" data-copy="sudo xattr -d com.apple.quarantine /Applications/gomander.app" title="Copy">⧉</button>
+    </div>
+  </div>
+
+  <!-- Note -->
+  <p class="cmd-note">
+    {'// browse all releases → '}
+    <a href={URLS.changelog} target="_blank" rel="noopener" class="accent-link">
+      lazylabz/gomander-app/releases
+    </a>
+  </p>
+</div>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.tab-btn');
+  const panels = document.querySelectorAll<HTMLElement>('[data-os-panel]');
+
+  const notice = document.getElementById('macos-notice');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const os = tab.dataset.os;
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      panels.forEach(p => p.classList.toggle('active', p.dataset.osPanel === os));
+      if (notice) notice.style.display = os === 'macOS' ? 'flex' : 'none';
+    });
+  });
+
+  document.querySelectorAll<HTMLButtonElement>('.copy-btn[data-copy]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      navigator.clipboard?.writeText(btn.dataset.copy ?? '').catch(() => {});
+      btn.textContent = '✓ COPIED';
+      setTimeout(() => { btn.textContent = 'COPY'; }, 1200);
+    });
+  });
+</script>
+
+<style>
+  .os-tabs-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tab-strip {
+    display: flex;
+    border: 1px solid var(--line);
+  }
+
+  .tab-btn {
+    flex: 1;
+    padding: 10px;
+    background: transparent;
+    color: var(--dim);
+    border: none;
+    font-family: inherit;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  /* .active applied via global.css for tab-btn */
+
+  .os-panel {
+    display: none;
+    flex-direction: column;
+    margin-top: 12px;
+    border: 1px solid var(--line);
+  }
+
+  .os-panel.active {
+    display: flex;
+  }
+
+  .dl-row {
+    display: grid;
+    grid-template-columns: 16px 1fr auto auto;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    background: var(--bg2);
+    text-decoration: none;
+    color: var(--text);
+    border-bottom: 1px solid var(--line);
+    transition: background 0.15s;
+    font-size: 12px;
+  }
+
+  .dl-row:last-child {
+    border-bottom: none;
+  }
+
+  .dl-row:hover {
+    background: var(--line);
+  }
+
+  .dl-row:hover .dl-arrow {
+    color: var(--accent);
+  }
+
+  .dl-prompt {
+    color: var(--accent);
+  }
+
+  .dl-file {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .dl-arch {
+    color: var(--dim);
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  .dl-arrow {
+    color: var(--dim);
+    transition: color 0.15s;
+  }
+
+  .macos-notice {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--line);
+  }
+
+  .notice-text {
+    font-size: 11px;
+    color: var(--dim);
+    margin: 0;
+    padding: 10px 16px;
+    text-align: center;
+    border-bottom: 1px solid var(--line);
+    line-height: 1.5;
+  }
+
+  .notice-info {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 12px;
+  }
+
+  .notice-info:hover {
+    text-decoration: underline;
+  }
+
+  .notice-cmd {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg2);
+    padding: 12px 16px;
+    overflow: hidden;
+  }
+
+  .notice-code {
+    flex: 1;
+    font-family: inherit;
+    font-size: 12px;
+    color: var(--text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .copy-btn {
+    background: transparent;
+    border: none;
+    color: var(--dim);
+    padding: 4px 6px;
+    font-family: inherit;
+    font-size: 15px;
+    cursor: pointer;
+    flex-shrink: 0;
+    line-height: 1;
+    transition: color 0.15s;
+  }
+
+  .copy-btn:hover {
+    color: var(--accent);
+  }
+
+  .cmd-note {
+    font-size: 11px;
+    color: var(--dim);
+    margin: 16px 0 0;
+    line-height: 1.7;
+  }
+
+  .accent-link {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+</style>

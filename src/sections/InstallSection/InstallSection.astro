@@ -1,0 +1,66 @@
+---
+import Rule from '../../components/Rule.astro';
+import OsTabs from './components/OsTabs.astro';
+---
+<section id="install" class="section">
+  <Rule label="$ ./install" />
+
+  <div class="install-grid">
+    <!-- Left: copy -->
+    <div class="install-copy">
+      <h2 class="install-heading">
+        Ready to take<br />
+        command?
+      </h2>
+      <p class="install-desc">
+        // pick your platform. native binaries for every<br />
+        // major OS. open source. always free.
+      </p>
+    </div>
+
+    <!-- Right: OS tabs + download -->
+    <OsTabs />
+  </div>
+</section>
+
+<style>
+  .section {
+    padding: 40px 24px 80px;
+  }
+
+  @media (min-width: 1024px) {
+    .section {
+      padding: 40px 56px 80px;
+    }
+  }
+
+  .install-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  @media (min-width: 1024px) {
+    .install-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+    }
+  }
+
+  .install-heading {
+    font-size: 36px;
+    letter-spacing: -1px;
+    margin: 0;
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--text);
+  }
+
+  .install-desc {
+    font-size: 13px;
+    color: var(--dim);
+    margin-top: 20px;
+    line-height: 1.7;
+  }
+</style>
