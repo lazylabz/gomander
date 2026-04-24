@@ -1,8 +1,10 @@
 ---
-import { STATS, URLS, VERSION } from '../../data/content';
+import { STATS, URLS, VERSION } from "../../data/content";
 
 const base = import.meta.env.BASE_URL;
-const mascotSrc = base.endsWith('/') ? `${base}gomander-land.png` : `${base}/gomander-land.png`;
+const mascotSrc = base.endsWith("/")
+	? `${base}gomander-land.png`
+	: `${base}/gomander-land.png`;
 ---
 <section class="hero">
   <div class="hero-content">

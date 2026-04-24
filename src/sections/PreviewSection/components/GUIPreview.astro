@@ -1,26 +1,56 @@
 ---
 const procs = [
-  { n: 'api-server', c: 'go run ./cmd/api', s: 'running', ms: '12ms' },
-  { n: 'web', c: 'pnpm dev', s: 'running', ms: '3.4s' },
-  { n: 'worker', c: 'go run ./cmd/worker', s: 'running', ms: '8ms' },
-  { n: 'postgres', c: 'docker compose up db', s: 'running', ms: '—' },
-  { n: 'migrate', c: 'make migrate', s: 'done', ms: '—' },
-  { n: 'tests', c: 'go test ./...', s: 'idle', ms: '—' },
+	{ n: "api-server", c: "go run ./cmd/api", s: "running", ms: "12ms" },
+	{ n: "web", c: "pnpm dev", s: "running", ms: "3.4s" },
+	{ n: "worker", c: "go run ./cmd/worker", s: "running", ms: "8ms" },
+	{ n: "postgres", c: "docker compose up db", s: "running", ms: "—" },
+	{ n: "migrate", c: "make migrate", s: "done", ms: "—" },
+	{ n: "tests", c: "go test ./...", s: "idle", ms: "—" },
 ];
 
 const logLines = [
-  { t: '14:22:01', p: 'api', cls: 'log-accent', m: 'listening on :8080' },
-  { t: '14:22:01', p: 'web', cls: 'log-purple', m: 'VITE v5.2.0  ready in 412 ms' },
-  { t: '14:22:02', p: 'web', cls: 'log-purple', m: '➜  Local:   http://localhost:5173/' },
-  { t: '14:22:03', p: 'api', cls: 'log-accent', m: 'GET /healthz 200 2.1ms' },
-  { t: '14:22:04', p: 'worker', cls: 'log-yellow', m: 'job queue empty, sleeping' },
-  { t: '14:22:06', p: 'api', cls: 'log-accent', m: 'POST /auth/login 200 18ms' },
-  { t: '14:22:07', p: 'web', cls: 'log-purple', m: 'hmr update /src/app.tsx' },
-  { t: '14:22:09', p: 'postgres', cls: 'log-green', m: 'LOG: checkpoint starting' },
-  { t: '14:22:11', p: 'api', cls: 'log-accent', m: 'GET /users/42 200 4.3ms' },
+	{ t: "14:22:01", p: "api", cls: "log-accent", m: "listening on :8080" },
+	{
+		t: "14:22:01",
+		p: "web",
+		cls: "log-purple",
+		m: "VITE v5.2.0  ready in 412 ms",
+	},
+	{
+		t: "14:22:02",
+		p: "web",
+		cls: "log-purple",
+		m: "➜  Local:   http://localhost:5173/",
+	},
+	{ t: "14:22:03", p: "api", cls: "log-accent", m: "GET /healthz 200 2.1ms" },
+	{
+		t: "14:22:04",
+		p: "worker",
+		cls: "log-yellow",
+		m: "job queue empty, sleeping",
+	},
+	{
+		t: "14:22:06",
+		p: "api",
+		cls: "log-accent",
+		m: "POST /auth/login 200 18ms",
+	},
+	{ t: "14:22:07", p: "web", cls: "log-purple", m: "hmr update /src/app.tsx" },
+	{
+		t: "14:22:09",
+		p: "postgres",
+		cls: "log-green",
+		m: "LOG: checkpoint starting",
+	},
+	{ t: "14:22:11", p: "api", cls: "log-accent", m: "GET /users/42 200 4.3ms" },
 ];
 
-const statusClass = (s: string) => s === 'running' ? 'status-running' : s === 'done' ? 'status-done' : 'status-idle';
+const statusClass = (s: string) =>
+	s === "running"
+		? "status-running"
+		: s === "done"
+			? "status-done"
+			: "status-idle";
 ---
 
 <div class="gui">

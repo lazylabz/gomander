@@ -1,8 +1,15 @@
 ---
-import { URLS, FOOTER_PRODUCT, FOOTER_COMMUNITY, FOOTER_LEGAL } from '../../data/content';
+import {
+	FOOTER_COMMUNITY,
+	FOOTER_LEGAL,
+	FOOTER_PRODUCT,
+	URLS,
+} from "../../data/content";
 
 const base = import.meta.env.BASE_URL;
-const mascotSrc = base.endsWith('/') ? `${base}gomander-land.png` : `${base}/gomander-land.png`;
+const mascotSrc = base.endsWith("/")
+	? `${base}gomander-land.png`
+	: `${base}/gomander-land.png`;
 ---
 <footer class="footer">
   <div class="footer-grid">
