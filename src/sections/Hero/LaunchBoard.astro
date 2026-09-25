@@ -1,0 +1,321 @@
+---
+import AppIcon from '../../components/AppIcon.astro';
+import { EXAMPLE_GROUP, EXAMPLE_PROJECT, LAUNCH_COMMANDS, VERSION } from '../../data/content';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const total = LAUNCH_COMMANDS.length;
+const initialActive = 'api';
+---
+
+<figure class="launch" data-app>
+	<div class="gx gx-window">
+		<div class="gx-titlebar" aria-hidden="true">
+			<span class="gx-lights"><i></i><i></i><i></i></span>
+			Gomander
+		</div>
+
+		<div class="app__body">
+			<aside class="gx-sidebar app__sidebar">
+				<div class="app__project">
+					<img src={`${base}/gomander-logo.webp`} alt="" width="34" height="34" />
+					<strong>{EXAMPLE_PROJECT}</strong>
+					<AppIcon name="chevron-down" />
+					<span class="app__plus"><AppIcon name="circle-plus" size={18} /></span>
+				</div>
+
+				<div class="app__section"><AppIcon name="chevron-right" /> Commands</div>
+				<div class="app__label">Command groups <AppIcon name="arrow-up-down" size={14} /></div>
+
+				<div class="gx-group-head">
+					<span class="gx-group-name"><AppIcon name="folder-open" /><span>{EXAMPLE_GROUP}</span></span>
+					<span class="gx-group-actions">
+						<span data-count>(0/{total})</span>
+						<button type="button" data-group-play aria-label={`Run group ${EXAMPLE_GROUP}`}><AppIcon name="play" /></button>
+						<button type="button" data-group-stop aria-label={`Stop group ${EXAMPLE_GROUP}`} hidden><AppIcon name="square" /></button>
+					</span>
+				</div>
+
+				<ul class="app__cmds">
+					{LAUNCH_COMMANDS.map((c) => (
+						<li
+							class="gx-cmd"
+							data-cmd={c.name}
+							data-state="idle"
+							data-line={c.line}
+							data-output={JSON.stringify(c.output)}
+							data-active={c.name === initialActive ? '' : undefined}
+						>
+							<button type="button" class="gx-cmd__name" data-select aria-label={`Show output of ${c.name}`}>
+								<span>{c.name}</span>
+								{c.link && <AppIcon name="link" size={14} />}
+							</button>
+							<button type="button" data-when="idle" data-toggle aria-label={`Run ${c.name}`}><AppIcon name="play" /></button>
+							<button type="button" data-when="running" data-toggle aria-label={`Stop ${c.name}`}><AppIcon name="square" /></button>
+						</li>
+					))}
+				</ul>
+
+				<div class="gx-group-head app__collapsed">
+					<span class="gx-group-name"><AppIcon name="folder" /><span>e2e</span></span>
+					<span class="gx-group-actions"><span>(0/3)</span><AppIcon name="play" /></span>
+				</div>
+
+				<div class="app__foot">
+					<AppIcon name="settings" />
+					<span class="gx-dot" data-dot></span>
+					<span class="app__version">{VERSION}</span>
+				</div>
+			</aside>
+
+			<div class="gx-term app__term" data-term aria-live="off"></div>
+		</div>
+	</div>
+	<figcaption class="launch__caption">
+		<span class="engraved">Example project</span>
+		<span>Press <AppIcon name="play" size={12} /> next to “{EXAMPLE_GROUP}”, or click any Command to read its output.</span>
+	</figcaption>
+</figure>
+
+<script>
+	type Line = { text: string; cmd?: boolean; ts: string };
+
+	const root = document.querySelector<HTMLElement>('[data-app]');
+	if (root) {
+		const rows = [...root.querySelectorAll<HTMLElement>('[data-cmd]')];
+		const term = root.querySelector<HTMLElement>('[data-term]')!;
+		const count = root.querySelector<HTMLElement>('[data-count]')!;
+		const dot = root.querySelector<HTMLElement>('[data-dot]')!;
+		const groupPlay = root.querySelector<HTMLButtonElement>('[data-group-play]')!;
+		const groupStop = root.querySelector<HTMLButtonElement>('[data-group-stop]')!;
+		const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		const buffers = new Map<string, Line[]>();
+		let run = 0;
+
+		const wait = (ms: number) => new Promise((r) => setTimeout(r, reduced ? 0 : ms));
+		const stamp = () => new Date().toTimeString().slice(0, 8);
+		const active = () => rows.find((r) => r.dataset.active !== undefined) ?? rows[0];
+
+		const render = () => {
+			const lines = buffers.get(active().dataset.cmd!) ?? [];
+			term.replaceChildren(
+				...lines.map((l) => {
+					const p = document.createElement('p');
+					const ts = document.createElement('span');
+					ts.className = 'ts';
+					ts.textContent = `[${l.ts}] `;
+					const text = document.createElement('span');
+					if (l.cmd) text.className = 'cmdline';
+					text.textContent = l.text;
+					p.append(ts, text);
+					return p;
+				}),
+			);
+		};
+
+		const sync = () => {
+			const running = rows.filter((r) => r.dataset.state === 'running').length;
+			count.textContent = `(${running}/${rows.length})`;
+			groupPlay.hidden = running === rows.length;
+			groupStop.hidden = running === 0;
+			if (running > 0) dot.dataset.on = '';
+			else delete dot.dataset.on;
+		};
+
+		const start = async (row: HTMLElement) => {
+			if (row.dataset.state === 'running') return;
+			const lines: Line[] = [{ text: row.dataset.line!, cmd: true, ts: stamp() }];
+			buffers.set(row.dataset.cmd!, lines);
+			row.dataset.state = 'running';
+			sync();
+			render();
+			for (const out of JSON.parse(row.dataset.output!) as string[]) {
+				await wait(260);
+				if (row.dataset.state !== 'running') return;
+				lines.push({ text: out, ts: stamp() });
+				render();
+			}
+		};
+
+		const stop = (row: HTMLElement) => {
+			row.dataset.state = 'idle';
+			sync();
+		};
+
+		const runGroup = async () => {
+			const id = ++run;
+			for (const row of rows) {
+				if (id !== run) return;
+				start(row);
+				await wait(380);
+			}
+		};
+
+		groupPlay.addEventListener('click', runGroup);
+		groupStop.addEventListener('click', () => {
+			run++;
+			rows.forEach(stop);
+		});
+
+		for (const row of rows) {
+			row.querySelector('[data-select]')!.addEventListener('click', () => {
+				rows.forEach((r) => delete r.dataset.active);
+				row.dataset.active = '';
+				render();
+			});
+			for (const toggle of row.querySelectorAll('[data-toggle]')) {
+				toggle.addEventListener('click', () => (row.dataset.state === 'running' ? stop(row) : start(row)));
+			}
+		}
+
+		if (reduced) {
+			runGroup();
+		} else {
+			const observer = new IntersectionObserver(
+				(entries) => {
+					if (!entries.some((e) => e.isIntersecting)) return;
+					observer.disconnect();
+					setTimeout(() => {
+						groupPlay.dataset.pressed = '';
+						setTimeout(() => {
+							delete groupPlay.dataset.pressed;
+							runGroup();
+						}, 280);
+					}, 900);
+				},
+				{ threshold: 0.4 },
+			);
+			observer.observe(root);
+		}
+	}
+</script>
+
+<style>
+	.launch {
+		margin: 0;
+	}
+
+	.app__body {
+		display: grid;
+		grid-template-columns: 236px minmax(0, 1fr);
+		height: 27rem;
+	}
+
+	.app__sidebar {
+		display: flex;
+		flex-direction: column;
+		min-height: 0;
+	}
+
+	.app__project {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		padding: 12px 12px 8px;
+	}
+
+	.app__project img {
+		border-radius: 50%;
+	}
+
+	.app__project strong {
+		font-size: 17px;
+		font-weight: 600;
+	}
+
+	.app__plus {
+		display: inline-grid;
+		margin-left: auto;
+		color: var(--gx-muted);
+	}
+
+	.app__section {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		padding: 8px 12px;
+		font-weight: 500;
+	}
+
+	.app__label {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		padding: 12px 16px 4px;
+		font-size: 13px;
+		color: var(--gx-muted);
+	}
+
+	.app__cmds {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.gx-cmd__name {
+		flex: 1;
+		justify-content: start;
+		color: var(--gx-fg) !important;
+		text-align: left;
+	}
+
+	.app__collapsed .gx-group-actions svg {
+		color: var(--gx-muted);
+	}
+
+	.app__foot {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		margin-top: auto;
+		padding: 10px 12px;
+		color: var(--gx-muted);
+	}
+
+	.app__version {
+		margin-left: auto;
+		font-size: 13px;
+	}
+
+	.app__term {
+		min-height: 0;
+	}
+
+	[data-group-play][data-pressed] {
+		color: var(--gx-fg);
+		transform: scale(0.85);
+		transition: transform 120ms ease;
+	}
+
+	.launch__caption {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.4rem 1rem;
+		margin-top: 1rem;
+		font-size: 0.875rem;
+		color: var(--ink-2);
+	}
+
+	.launch__caption :global(svg) {
+		display: inline-block;
+		vertical-align: -1px;
+	}
+
+	@media (max-width: 40rem) {
+		.app__body {
+			grid-template-columns: minmax(0, 1fr);
+			grid-template-rows: auto 9.5rem;
+			height: auto;
+		}
+
+		.app__sidebar {
+			border-right: 0;
+			border-bottom: 1px solid var(--gx-border);
+		}
+
+		.app__collapsed,
+		.app__section {
+			display: none;
+		}
+	}
+</style>

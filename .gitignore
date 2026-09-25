@@ -22,3 +22,20 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# claude code local settings
+.claude/settings.local.json
+
+# impeccable launcher downloads a per-platform binary on first run
+.claude/skills/impeccable/scripts/bin/
+
+# impeccable: local/runtime state (design.json, surfaces/ and live/config.json stay tracked)
+.impeccable/config.local.json
+.impeccable/hook.cache.json
+.impeccable/review/
+.impeccable/questions/
+.impeccable/live/*
+!.impeccable/live/config.json
+
+# impeccable raster provenance sidecars (would otherwise be served from public/)
+public/*.webp.json

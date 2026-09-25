@@ -1,0 +1,1007 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-25T06:42:06+00:00",
+  "title": "Design System: Gomander",
+  "extensions": {
+    "colorMeta": {
+      "console": {
+        "role": "neutral",
+        "displayName": "Console Putty",
+        "canonical": "#d4d6cf",
+        "oklch": "oklch(87.3% 0.010 119.6)",
+        "tonalRamp": [
+          "#0b0c07",
+          "#242621",
+          "#41433d",
+          "#60625c",
+          "#81837d",
+          "#a4a69f",
+          "#c8cac3",
+          "#edefe8"
+        ]
+      },
+      "console-raised": {
+        "role": "neutral",
+        "displayName": "Raised Panel",
+        "canonical": "#e2e3dd",
+        "oklch": "oklch(91.3% 0.008 114.2)",
+        "tonalRamp": [
+          "#0b0c08",
+          "#252621",
+          "#42423e",
+          "#61625d",
+          "#82837d",
+          "#a5a6a0",
+          "#c9cac4",
+          "#eeefe9"
+        ]
+      },
+      "console-sunk": {
+        "role": "neutral",
+        "displayName": "Sunk Tray",
+        "canonical": "#c5c8c0",
+        "oklch": "oklch(82.8% 0.011 123.5)",
+        "tonalRamp": [
+          "#0a0c07",
+          "#242620",
+          "#41433c",
+          "#60625b",
+          "#81847c",
+          "#a3a69f",
+          "#c7cac2",
+          "#edf0e8"
+        ]
+      },
+      "console-hover": {
+        "role": "neutral",
+        "displayName": "Plain Hover",
+        "canonical": "#eceee8",
+        "oklch": "oklch(94.6% 0.008 121.6)",
+        "tonalRamp": [
+          "#0b0c08",
+          "#242621",
+          "#41433e",
+          "#60625d",
+          "#81837e",
+          "#a4a6a0",
+          "#c8cac4",
+          "#edefe9"
+        ]
+      },
+      "seam": {
+        "role": "neutral",
+        "displayName": "Seam",
+        "canonical": "#a6a99f",
+        "oklch": "oklch(72.9% 0.015 120.4)",
+        "tonalRamp": [
+          "#0a0c06",
+          "#24261e",
+          "#41433b",
+          "#606359",
+          "#81847a",
+          "#a4a79d",
+          "#c8cbc0",
+          "#edf0e5"
+        ]
+      },
+      "seam-soft": {
+        "role": "neutral",
+        "displayName": "Soft Seam",
+        "canonical": "#bdc0b7",
+        "oklch": "oklch(80.3% 0.013 121.8)",
+        "tonalRamp": [
+          "#0a0c06",
+          "#24261f",
+          "#41433c",
+          "#60625a",
+          "#81847b",
+          "#a3a69e",
+          "#c8cbc1",
+          "#edf0e7"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#1a1c1a",
+        "oklch": "oklch(22.4% 0.005 145.4)",
+        "tonalRamp": [
+          "#0a0c0a",
+          "#242624",
+          "#404340",
+          "#5f625f",
+          "#808380",
+          "#a3a6a3",
+          "#c7cac7",
+          "#ecefec"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink 2",
+        "canonical": "#434741",
+        "oklch": "oklch(39.2% 0.011 135.0)",
+        "tonalRamp": [
+          "#090c08",
+          "#232621",
+          "#3f433d",
+          "#5e635c",
+          "#7f847d",
+          "#a2a7a0",
+          "#c6cbc4",
+          "#ebf0e9"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Ink 3",
+        "canonical": "#52564f",
+        "oklch": "oklch(49.4% 0.011 134.9)",
+        "tonalRamp": [
+          "#090c08",
+          "#232621",
+          "#40433e",
+          "#52564f",
+          "#80847d",
+          "#a2a7a0",
+          "#c6cbc4",
+          "#ebf0e9"
+        ]
+      },
+      "screen": {
+        "role": "neutral",
+        "displayName": "Screen",
+        "canonical": "#101311",
+        "oklch": "oklch(18.3% 0.006 156.6)",
+        "tonalRamp": [
+          "#090c0a",
+          "#232624",
+          "#3f4341",
+          "#5e6260",
+          "#7f8381",
+          "#a2a6a3",
+          "#c6cac7",
+          "#ebf0ed"
+        ]
+      },
+      "screen-raised": {
+        "role": "neutral",
+        "displayName": "Screen Raised",
+        "canonical": "#181c19",
+        "oklch": "oklch(22.1% 0.008 153.2)",
+        "tonalRamp": [
+          "#090c09",
+          "#222623",
+          "#3f4340",
+          "#5e635f",
+          "#7f8480",
+          "#a1a7a3",
+          "#c5cbc7",
+          "#eaf0ec"
+        ]
+      },
+      "screen-seam": {
+        "role": "neutral",
+        "displayName": "Screen Seam",
+        "canonical": "#2a302b",
+        "oklch": "oklch(30.2% 0.012 150.3)",
+        "tonalRamp": [
+          "#080d09",
+          "#212722",
+          "#3e443f",
+          "#5d635e",
+          "#7d847f",
+          "#a0a7a1",
+          "#c4cbc5",
+          "#e9f1ea"
+        ]
+      },
+      "phosphor": {
+        "role": "neutral",
+        "displayName": "Phosphor",
+        "canonical": "#d3e4d7",
+        "oklch": "oklch(90.3% 0.025 152.8)",
+        "tonalRamp": [
+          "#040e06",
+          "#1c291f",
+          "#38463c",
+          "#57665a",
+          "#77877b",
+          "#9aaa9e",
+          "#becec1",
+          "#e3f4e7"
+        ]
+      },
+      "phosphor-dim": {
+        "role": "neutral",
+        "displayName": "Phosphor Dim",
+        "canonical": "#869a8c",
+        "oklch": "oklch(66.6% 0.031 155.0)",
+        "tonalRamp": [
+          "#020f06",
+          "#192a1e",
+          "#35473b",
+          "#54675a",
+          "#74887a",
+          "#97ab9d",
+          "#bacfc1",
+          "#dff5e6"
+        ]
+      },
+      "lens": {
+        "role": "neutral",
+        "displayName": "Lens",
+        "canonical": "#2a2d2b",
+        "oklch": "oklch(29.3% 0.006 156.9)",
+        "tonalRamp": [
+          "#090c0a",
+          "#232624",
+          "#404341",
+          "#5f6260",
+          "#808381",
+          "#a2a6a4",
+          "#c6cac8",
+          "#ecf0ed"
+        ]
+      },
+      "lens-legend": {
+        "role": "neutral",
+        "displayName": "Lens Legend",
+        "canonical": "#a3a89f",
+        "oklch": "oklch(72.5% 0.014 130.8)",
+        "tonalRamp": [
+          "#090c07",
+          "#23271f",
+          "#3f443c",
+          "#5e635b",
+          "#7f847c",
+          "#a2a79e",
+          "#c6cbc2",
+          "#ebf1e7"
+        ]
+      },
+      "go": {
+        "role": "primary",
+        "displayName": "GO Deep",
+        "canonical": "#2d9a5a",
+        "oklch": "oklch(60.9% 0.137 153.2)",
+        "tonalRamp": [
+          "#001103",
+          "#002e13",
+          "#025028",
+          "#08753d",
+          "#2c9959",
+          "#56be7b",
+          "#7ce39e",
+          "#c7ffd6"
+        ]
+      },
+      "go-lit": {
+        "role": "primary",
+        "displayName": "GO Lamp Green",
+        "canonical": "#4fd585",
+        "oklch": "oklch(78.0% 0.164 153.7)",
+        "tonalRamp": [
+          "#001003",
+          "#002e14",
+          "#055029",
+          "#0e743f",
+          "#179b57",
+          "#37c273",
+          "#64e896",
+          "#c6ffd6"
+        ]
+      },
+      "go-hover": {
+        "role": "primary",
+        "displayName": "GO Hover",
+        "canonical": "#62e295",
+        "oklch": "oklch(82.1% 0.158 154.3)",
+        "tonalRamp": [
+          "#001103",
+          "#002e15",
+          "#00502a",
+          "#037540",
+          "#089b57",
+          "#3bc176",
+          "#67e79a",
+          "#c7ffd8"
+        ]
+      },
+      "hold": {
+        "role": "secondary",
+        "displayName": "HOLD Amber (unlit)",
+        "canonical": "#d99a1f",
+        "oklch": "oklch(72.9% 0.145 77.6)",
+        "tonalRamp": [
+          "#160800",
+          "#342100",
+          "#593c01",
+          "#815905",
+          "#ab770b",
+          "#d6981a",
+          "#fdbc4d",
+          "#ffecd0"
+        ]
+      },
+      "hold-lit": {
+        "role": "secondary",
+        "displayName": "HOLD Amber",
+        "canonical": "#ffc34d",
+        "oklch": "oklch(85.1% 0.147 81.1)",
+        "tonalRamp": [
+          "#150800",
+          "#332100",
+          "#573d00",
+          "#7f5a00",
+          "#a77914",
+          "#d49909",
+          "#fabe47",
+          "#feeccd"
+        ]
+      },
+      "abort": {
+        "role": "tertiary",
+        "displayName": "ABORT Red (unlit)",
+        "canonical": "#c93c2a",
+        "oklch": "oklch(56.2% 0.181 30.6)",
+        "tonalRamp": [
+          "#230000",
+          "#4d0100",
+          "#7e0c01",
+          "#b12211",
+          "#d94c38",
+          "#fe7560",
+          "#fdb4a7",
+          "#ffe9e5"
+        ]
+      },
+      "abort-lit": {
+        "role": "tertiary",
+        "displayName": "ABORT Red",
+        "canonical": "#ff5f47",
+        "oklch": "oklch(69.1% 0.199 31.1)",
+        "tonalRamp": [
+          "#220000",
+          "#4d0100",
+          "#7e0d00",
+          "#b41a03",
+          "#e0412b",
+          "#fe755f",
+          "#fdb4a6",
+          "#fee9e5"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Checklist Paper",
+        "canonical": "#f2f0e9",
+        "oklch": "oklch(95.5% 0.010 93.6)",
+        "tonalRamp": [
+          "#0c0b07",
+          "#272520",
+          "#44423c",
+          "#63615b",
+          "#84827c",
+          "#a7a59e",
+          "#cbc9c2",
+          "#f0eee7"
+        ]
+      },
+      "pencil": {
+        "role": "tertiary",
+        "displayName": "Pencil Red",
+        "canonical": "#b0301f",
+        "oklch": "oklch(50.5% 0.167 30.9)",
+        "tonalRamp": [
+          "#220000",
+          "#4e0000",
+          "#7f0700",
+          "#ac2c1b",
+          "#d4523f",
+          "#fc7761",
+          "#ffb4a5",
+          "#ffe9e4"
+        ]
+      },
+      "app-bg": {
+        "role": "replica",
+        "displayName": "App White",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ],
+        "scope": ".gx replicas only; mirrored from the Gomander app (shadcn light / xterm.js defaults)"
+      },
+      "app-fg": {
+        "role": "replica",
+        "displayName": "App Ink",
+        "canonical": "#0a0a0a",
+        "oklch": "oklch(14.5% 0.000 89.9)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ],
+        "scope": ".gx replicas only; mirrored from the Gomander app (shadcn light / xterm.js defaults)"
+      },
+      "app-sidebar": {
+        "role": "replica",
+        "displayName": "App Sidebar",
+        "canonical": "#fafafa",
+        "oklch": "oklch(98.5% 0.000 89.9)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ],
+        "scope": ".gx replicas only; mirrored from the Gomander app (shadcn light / xterm.js defaults)"
+      },
+      "app-accent": {
+        "role": "replica",
+        "displayName": "App Accent",
+        "canonical": "#f5f5f5",
+        "oklch": "oklch(97.0% 0.000 89.9)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ],
+        "scope": ".gx replicas only; mirrored from the Gomander app (shadcn light / xterm.js defaults)"
+      },
+      "app-border": {
+        "role": "replica",
+        "displayName": "App Border",
+        "canonical": "#e5e5e5",
+        "oklch": "oklch(92.2% 0.000 89.9)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ],
+        "scope": ".gx replicas only; mirrored from the Gomander app (shadcn light / xterm.js defaults)"
+      },
+      "app-muted": {
+        "role": "replica",
+        "displayName": "App Muted",
+        "canonical": "#737373",
+        "oklch": "oklch(55.6% 0.000 89.9)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ],
+        "scope": ".gx replicas only; mirrored from the Gomander app (shadcn light / xterm.js defaults)"
+      },
+      "app-running": {
+        "role": "replica",
+        "displayName": "Running Row",
+        "canonical": "#dcfce7",
+        "oklch": "oklch(96.2% 0.043 156.7)",
+        "tonalRamp": [
+          "#001004",
+          "#112b1c",
+          "#2e4939",
+          "#4d6957",
+          "#6d8b78",
+          "#90ae9a",
+          "#b3d2be",
+          "#d8f8e3"
+        ],
+        "scope": ".gx replicas only; mirrored from the Gomander app (shadcn light / xterm.js defaults)"
+      },
+      "app-running-active": {
+        "role": "replica",
+        "displayName": "Running Row Active",
+        "canonical": "#bbf7d0",
+        "oklch": "oklch(92.5% 0.081 156.0)",
+        "tonalRamp": [
+          "#001300",
+          "#003013",
+          "#134e2f",
+          "#376f4e",
+          "#58916e",
+          "#7bb590",
+          "#9ed9b3",
+          "#c3ffd8"
+        ],
+        "scope": ".gx replicas only; mirrored from the Gomander app (shadcn light / xterm.js defaults)"
+      },
+      "app-live": {
+        "role": "replica",
+        "displayName": "Live Dot",
+        "canonical": "#22c55e",
+        "oklch": "oklch(72.3% 0.192 149.6)",
+        "tonalRamp": [
+          "#001900",
+          "#003800",
+          "#005900",
+          "#007c0f",
+          "#00a03a",
+          "#21c55e",
+          "#57eb81",
+          "#82ffa6"
+        ],
+        "scope": ".gx replicas only; mirrored from the Gomander app (shadcn light / xterm.js defaults)"
+      },
+      "app-error": {
+        "role": "replica",
+        "displayName": "Error Row",
+        "canonical": "#fee2e2",
+        "oklch": "oklch(93.6% 0.031 17.7)",
+        "tonalRamp": [
+          "#160607",
+          "#331f1f",
+          "#513c3c",
+          "#725a5b",
+          "#947b7b",
+          "#b89e9e",
+          "#ddc2c2",
+          "#ffe7e7"
+        ],
+        "scope": ".gx replicas only; mirrored from the Gomander app (shadcn light / xterm.js defaults)"
+      },
+      "app-popover": {
+        "role": "replica",
+        "displayName": "App Popover",
+        "canonical": "#171717",
+        "oklch": "oklch(20.5% 0.000 89.9)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ],
+        "scope": ".gx replicas only; mirrored from the Gomander app (shadcn light / xterm.js defaults)"
+      },
+      "term-dim": {
+        "role": "replica",
+        "displayName": "Terminal Dim",
+        "canonical": "#666666",
+        "oklch": "oklch(51.0% 0.000 89.9)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ],
+        "scope": ".gx replicas only; mirrored from the Gomander app (shadcn light / xterm.js defaults)"
+      },
+      "term-cyan": {
+        "role": "replica",
+        "displayName": "ANSI Cyan",
+        "canonical": "#29b8db",
+        "oklch": "oklch(72.6% 0.123 219.3)",
+        "tonalRamp": [
+          "#000f2d",
+          "#002e4d",
+          "#004e6e",
+          "#007090",
+          "#0092b4",
+          "#26b7d9",
+          "#59dcff",
+          "#83ffff"
+        ],
+        "scope": ".gx replicas only; mirrored from the Gomander app (shadcn light / xterm.js defaults)"
+      },
+      "term-green": {
+        "role": "replica",
+        "displayName": "ANSI Green",
+        "canonical": "#0dbc79",
+        "oklch": "oklch(70.2% 0.160 158.8)",
+        "tonalRamp": [
+          "#001900",
+          "#003800",
+          "#00581d",
+          "#007a3d",
+          "#009e5d",
+          "#1fc27f",
+          "#57e8a2",
+          "#82ffc7"
+        ],
+        "scope": ".gx replicas only; mirrored from the Gomander app (shadcn light / xterm.js defaults)"
+      },
+      "term-red": {
+        "role": "replica",
+        "displayName": "ANSI Red",
+        "canonical": "#cd3131",
+        "oklch": "oklch(55.9% 0.193 26.1)",
+        "tonalRamp": [
+          "#3e0000",
+          "#650000",
+          "#8d0000",
+          "#b5101c",
+          "#de433f",
+          "#ff6a62",
+          "#ff9085",
+          "#ffb6a9"
+        ],
+        "scope": ".gx replicas only; mirrored from the Gomander app (shadcn light / xterm.js defaults)"
+      },
+      "term-yellow": {
+        "role": "replica",
+        "displayName": "ANSI Yellow",
+        "canonical": "#b5b500",
+        "oklch": "oklch(74.8% 0.163 109.8)",
+        "tonalRamp": [
+          "#140900",
+          "#2e2600",
+          "#4a4500",
+          "#696600",
+          "#8a8900",
+          "#adac00",
+          "#d1d13c",
+          "#f6f869"
+        ],
+        "scope": ".gx replicas only; mirrored from the Gomander app (shadcn light / xterm.js defaults)"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero h1 only; one word may sit on a GO-lit lamp face."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "One short declarative sentence per section, max 16ch, balanced wrap."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Station and panel headings; download bays scale to 2rem at wdth 85."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Paragraph beside or under a headline, ink-2, max 52ch."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Reading text, pretty wrap, ~50ch in panels."
+      },
+      "label": {
+        "displayName": "Engraved Label",
+        "purpose": "Legends painted on a panel or instrument naming the readout they sit on (STN 1 · OUTPUT, LOCAL API); uppercase."
+      },
+      "button": {
+        "displayName": "Pushbutton Legend",
+        "purpose": "Uppercase pushbutton text; 0.75rem in compact contexts."
+      },
+      "tab": {
+        "displayName": "Tab Legend",
+        "purpose": "Uppercase tab-switch legend above an instrument."
+      },
+      "lamp-legend": {
+        "displayName": "Lamp Legend",
+        "purpose": "Uppercase text on a lamp face (GET, POST, 01, the version)."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Commands, paths, endpoints, screen snippets; ligatures off."
+      },
+      "mono-small": {
+        "displayName": "Mono Small",
+        "purpose": "Version readout, counters; tabular nums."
+      },
+      "app-ui": {
+        "displayName": "App UI",
+        "purpose": "System sans at 14px inside .gx replicas only; row labels 500, section labels 13px app-muted."
+      },
+      "app-term": {
+        "displayName": "App Terminal",
+        "purpose": "Replica xterm output, ui-monospace 12px, never wraps; .gx only."
+      }
+    },
+    "shadows": [
+      {
+        "name": "panel-ambient",
+        "value": "0 0 0 1px var(--seam), 0 30px 60px -40px rgb(30 34 30 / 0.5)",
+        "purpose": "Seam-gridded panel groups: stations, download bays, uplink panel, Raycast image."
+      },
+      {
+        "name": "window-lift",
+        "value": "0 0 0 1px rgb(0 0 0 / 0.14), 0 30px 60px -30px rgb(30 34 30 / 0.55), 0 12px 24px -16px rgb(30 34 30 / 0.35)",
+        "purpose": "The hero replica window, the single most-lifted object."
+      },
+      {
+        "name": "crop-lift",
+        "value": "0 0 0 1px rgb(0 0 0 / 0.12), 0 10px 24px -16px rgb(30 34 30 / 0.45)",
+        "purpose": "A UI crop set into a station."
+      },
+      {
+        "name": "bezel",
+        "value": "inset 0 1px 0 rgb(255 255 255 / 0.8), 0 0 0 1px var(--seam)",
+        "purpose": "Standalone raised plates."
+      },
+      {
+        "name": "lamp-lens",
+        "value": "inset 0 1px 0 rgb(255 255 255 / 0.08), inset 0 -1px 0 rgb(0 0 0 / 0.4)",
+        "purpose": "Unlit lamp lens."
+      },
+      {
+        "name": "lamp-lit-go",
+        "value": "inset 0 1px 0 rgb(255 255 255 / 0.45), inset 0 -1px 0 rgb(0 0 0 / 0.2), 0 0 0 1px rgb(0 0 0 / 0.25), 0 2px 10px -2px rgb(79 213 133 / 0.55)",
+        "purpose": "Lit GO lamp; HOLD and ABORT swap the glow to their own hue."
+      },
+      {
+        "name": "pushbutton-go",
+        "value": "inset 0 1px 0 rgb(255 255 255 / 0.5), inset 0 -2px 0 rgb(0 0 0 / 0.18), 0 0 0 1px rgb(0 0 0 / 0.35), 0 6px 18px -8px rgb(45 154 90 / 0.8)",
+        "purpose": "GO pushbutton at rest."
+      },
+      {
+        "name": "pushbutton-plain",
+        "value": "inset 0 1px 0 rgb(255 255 255 / 0.7), inset 0 -2px 0 rgb(0 0 0 / 0.1), 0 0 0 1px var(--seam), 0 4px 10px -6px rgb(0 0 0 / 0.35)",
+        "purpose": "Plain pushbutton at rest."
+      },
+      {
+        "name": "instrument-well",
+        "value": "inset 0 0 0 1px var(--seam-soft)",
+        "purpose": "Console instrument well around diagrams."
+      },
+      {
+        "name": "app-toast",
+        "value": "0 4px 12px rgb(0 0 0 / 0.1)",
+        "purpose": "The app's own toast; .gx replicas only."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The only easing curve on console hardware."
+      },
+      {
+        "name": "lamp-on",
+        "value": "60ms",
+        "purpose": "Lit state switch-on for lamps."
+      },
+      {
+        "name": "lamp-decay",
+        "value": "900ms",
+        "purpose": "Return to unlit: slow phosphor decay."
+      },
+      {
+        "name": "press",
+        "value": "120ms translateY(1px)",
+        "purpose": "Pushbutton active travel."
+      },
+      {
+        "name": "hover",
+        "value": "160-200ms",
+        "purpose": "Link colour, button face, tab legend, arrow nudge."
+      },
+      {
+        "name": "app-row-fill",
+        "value": "180ms ease",
+        "purpose": "Replica command-row state fill (app's own easing); .gx only."
+      },
+      {
+        "name": "app-ping",
+        "value": "1s cubic-bezier(0, 0, 0.2, 1) infinite",
+        "purpose": "Replica live-dot ping, as in the app; .gx only."
+      },
+      {
+        "name": "app-launch-sequence",
+        "value": "380ms per Command, 260ms per output line",
+        "purpose": "Hero replica group run; auto-starts once at 40% visibility, instant under reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "xs",
+        "value": "30rem"
+      },
+      {
+        "name": "sm",
+        "value": "36rem"
+      },
+      {
+        "name": "md",
+        "value": "40rem"
+      },
+      {
+        "name": "footer",
+        "value": "48rem"
+      },
+      {
+        "name": "nav",
+        "value": "52rem"
+      },
+      {
+        "name": "lg",
+        "value": "64rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "GO Pushbutton",
+      "kind": "button",
+      "refersTo": "button-go",
+      "description": "The one lit action per decision: launch or download.",
+      "html": "<button class=\"ds-push ds-push--go\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 4v11\"/><path d=\"m7 10.5 5 5 5-5\"/><path d=\"M5 20h14\"/></svg><span>Download Gomander</span></button>",
+      "css": ".ds-push { display: inline-flex; align-items: center; gap: 0.6rem; min-height: 3.25rem; padding: 0 1.4rem; border: 0; border-radius: 3px; font-family: var(--font-display, 'Archivo Variable', sans-serif); font-variation-settings: 'wdth' 108; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: transform 120ms cubic-bezier(0.16,1,0.3,1), box-shadow 200ms cubic-bezier(0.16,1,0.3,1), background-color 200ms cubic-bezier(0.16,1,0.3,1); } .ds-push:active { transform: translateY(1px); } .ds-push:focus-visible { outline: 2px solid #1a1c1a; outline-offset: 3px; } .ds-push--go { background: #4fd585; color: #1a1c1a; box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.5), inset 0 -2px 0 rgb(0 0 0 / 0.18), 0 0 0 1px rgb(0 0 0 / 0.35), 0 6px 18px -8px rgb(45 154 90 / 0.8); } .ds-push--go:hover { background: #62e295; box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.55), inset 0 -2px 0 rgb(0 0 0 / 0.18), 0 0 0 1px rgb(0 0 0 / 0.35), 0 8px 26px -8px rgb(45 154 90 / 0.95); }"
+    },
+    {
+      "name": "Plain Pushbutton",
+      "kind": "button",
+      "refersTo": "button-plain",
+      "description": "Secondary hardware button: GitHub, Stop, non-primary builds.",
+      "html": "<button class=\"ds-push ds-push--plain\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" aria-hidden=\"true\"><rect x=\"6.5\" y=\"6.5\" width=\"11\" height=\"11\" rx=\"1\"/></svg><span>Stop</span></button>",
+      "css": ".ds-push { display: inline-flex; align-items: center; gap: 0.6rem; min-height: 3.25rem; padding: 0 1.4rem; border: 0; border-radius: 3px; font-family: var(--font-display, 'Archivo Variable', sans-serif); font-variation-settings: 'wdth' 108; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: transform 120ms cubic-bezier(0.16,1,0.3,1), background-color 200ms cubic-bezier(0.16,1,0.3,1); } .ds-push:active { transform: translateY(1px); } .ds-push:focus-visible { outline: 2px solid #1a1c1a; outline-offset: 3px; } .ds-push--plain { background: #e2e3dd; color: #1a1c1a; box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.7), inset 0 -2px 0 rgb(0 0 0 / 0.1), 0 0 0 1px #a6a99f, 0 4px 10px -6px rgb(0 0 0 / 0.35); } .ds-push--plain:hover { background: #eceee8; }"
+    },
+    {
+      "name": "Tab Switch",
+      "kind": "chip",
+      "refersTo": "tab-switch",
+      "description": "Flat console keys forming a tablist above an instrument; selected key goes solid ink, never lit.",
+      "html": "<div class=\"ds-switch\" role=\"tablist\"><button role=\"tab\" aria-selected=\"true\">Error patterns</button><button role=\"tab\" aria-selected=\"false\">Missing path</button><button role=\"tab\" aria-selected=\"false\">Running indicator</button></div>",
+      "css": ".ds-switch { display: flex; flex-wrap: wrap; gap: 0.35rem; padding: 1rem; background: #e2e3dd; } .ds-switch button { padding: 0.45rem 0.7rem; border: 0; border-radius: 3px; background: #d4d6cf; color: #434741; font-family: var(--font-display, 'Archivo Variable', sans-serif); font-variation-settings: 'wdth' 108; font-weight: 650; font-size: 0.6875rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; box-shadow: inset 0 0 0 1px #a6a99f; transition: background-color 200ms cubic-bezier(0.16,1,0.3,1), color 200ms cubic-bezier(0.16,1,0.3,1); } .ds-switch button:hover { color: #1a1c1a; } .ds-switch button[aria-selected='true'] { background: #1a1c1a; color: #e2e3dd; box-shadow: none; } .ds-switch button:focus-visible { outline: 2px solid #1a1c1a; outline-offset: 3px; }"
+    },
+    {
+      "name": "Lamp",
+      "kind": "chip",
+      "refersTo": "lamp",
+      "description": "Status atom: unlit lens, or lit GO / HOLD / ABORT. Instant on, slow decay.",
+      "html": "<div class=\"ds-lamps\"><span class=\"ds-lamp\">Stby</span><span class=\"ds-lamp ds-lamp--hold\">Start</span><span class=\"ds-lamp ds-lamp--go\">Go</span><span class=\"ds-lamp ds-lamp--abort\">Fail</span></div>",
+      "css": ".ds-lamps { display: flex; gap: 0.6rem; padding: 1rem; background: #e2e3dd; } .ds-lamp { display: inline-grid; place-items: center; min-width: 3.25rem; padding: 0.3rem 0.5rem; border-radius: 2px; background: #2a2d2b; color: #a3a89f; font-family: var(--font-display, 'Archivo Variable', sans-serif); font-variation-settings: 'wdth' 112; font-weight: 700; font-size: 0.625rem; letter-spacing: 0.12em; line-height: 1; text-transform: uppercase; box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08), inset 0 -1px 0 rgb(0 0 0 / 0.4); transition: background-color 900ms cubic-bezier(0.16,1,0.3,1), color 900ms cubic-bezier(0.16,1,0.3,1), box-shadow 900ms cubic-bezier(0.16,1,0.3,1); } .ds-lamp:hover { background: #ffc34d; color: #1a1c1a; transition-duration: 60ms; } .ds-lamp--go, .ds-lamp--hold, .ds-lamp--abort { color: #1a1c1a; transition-duration: 60ms; } .ds-lamp--go { background: #4fd585; box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.45), inset 0 -1px 0 rgb(0 0 0 / 0.2), 0 0 0 1px rgb(0 0 0 / 0.25), 0 2px 10px -2px rgb(79 213 133 / 0.55); } .ds-lamp--hold { background: #ffc34d; box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.45), inset 0 -1px 0 rgb(0 0 0 / 0.2), 0 0 0 1px rgb(0 0 0 / 0.25), 0 2px 10px -2px rgb(255 195 77 / 0.55); } .ds-lamp--abort { background: #ff5f47; box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.4), inset 0 -1px 0 rgb(0 0 0 / 0.2), 0 0 0 1px rgb(0 0 0 / 0.25), 0 2px 12px -2px rgb(255 95 71 / 0.6); }"
+    },
+    {
+      "name": "Console Nav Strip",
+      "kind": "nav",
+      "refersTo": "readout",
+      "description": "Sticky header: wordmark, version readout, engraved nav links, compact GO button.",
+      "html": "<header class=\"ds-nav\"><span class=\"ds-nav__brand\">Gomander</span><span class=\"ds-nav__readout\">v1.9.0</span><nav class=\"ds-nav__links\"><a href=\"#\">Features</a><a href=\"#\">API</a><a href=\"#\">GitHub</a></nav><a class=\"ds-nav__cta\" href=\"#\">Download</a></header>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 1.5rem; min-height: 4.25rem; padding: 0 1.5rem; background: #d4d6cf; border-bottom: 1px solid #a6a99f; box-shadow: 0 1px 0 rgb(255 255 255 / 0.5); font-family: var(--font-display, 'Archivo Variable', sans-serif); } .ds-nav__brand { font-variation-settings: 'wdth' 118; font-weight: 800; font-size: 1rem; letter-spacing: 0.1em; text-transform: uppercase; color: #1a1c1a; } .ds-nav__readout { margin-left: -0.8rem; font-family: var(--font-mono, 'Martian Mono Variable', monospace); font-size: 0.6875rem; font-variant-numeric: tabular-nums; padding: 0.2rem 0.45rem; border-radius: 2px; background: #101311; color: #ffc34d; letter-spacing: 0.04em; } .ds-nav__links { display: flex; gap: 1.75rem; margin-left: auto; } .ds-nav__links a { color: #434741; text-decoration: none; font-variation-settings: 'wdth' 110; font-weight: 600; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 160ms cubic-bezier(0.16,1,0.3,1); } .ds-nav__links a:hover { color: #1a1c1a; } .ds-nav a:focus-visible { outline: 2px solid #1a1c1a; outline-offset: 3px; border-radius: 2px; } .ds-nav__cta { display: inline-flex; align-items: center; min-height: 2.5rem; padding: 0 1rem; border-radius: 3px; background: #4fd585; color: #1a1c1a; text-decoration: none; font-variation-settings: 'wdth' 108; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.5), inset 0 -2px 0 rgb(0 0 0 / 0.18), 0 0 0 1px rgb(0 0 0 / 0.35), 0 6px 18px -8px rgb(45 154 90 / 0.8); } .ds-nav__cta:hover { background: #62e295; } .ds-nav__cta:active { transform: translateY(1px); }"
+    },
+    {
+      "name": "Station Panel Group",
+      "kind": "card",
+      "refersTo": "station-panel",
+      "description": "Raised faces joined by 1px seams, lifted once by the panel ambient shadow; legend, replica crop, title, body.",
+      "html": "<div class=\"ds-stations\"><article class=\"ds-station\"><span class=\"ds-engraved\">Stn 3 · Group bus</span><div class=\"ds-crop\"><div class=\"ds-grp\"><span>dev stack</span><span>(5/5)</span></div><div class=\"ds-grp\"><span>e2e</span><span>(0/3)</span></div></div><h3>Command Groups</h3><p>Bundle the Commands that belong together and launch or stop them as one.</p></article><article class=\"ds-station\"><span class=\"ds-engraved\">Stn 4 · Project load</span><div class=\"ds-well\"><code>\"dev\": \"vite\"</code></div><h3>Projects, set up in seconds</h3><p>Commands live under a Project with their own working directory.</p></article></div>",
+      "css": ".ds-stations { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: #a6a99f; border-radius: 6px; overflow: hidden; box-shadow: 0 0 0 1px #a6a99f, 0 30px 60px -40px rgb(30 34 30 / 0.5); font-family: var(--font-display, 'Archivo Variable', sans-serif); color: #1a1c1a; } .ds-station { display: flex; flex-direction: column; padding: clamp(1.25rem, 2.5vw, 2rem); background: #e2e3dd; } .ds-engraved { display: block; margin-bottom: 0.9rem; font-variation-settings: 'wdth' 112; font-weight: 600; font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; color: #52564f; } .ds-crop { padding: 6px 4px 8px; border-radius: 8px; background: #fafafa; box-shadow: 0 0 0 1px rgb(0 0 0 / 0.12), 0 10px 24px -16px rgb(30 34 30 / 0.45); font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 14px; font-variation-settings: normal; color: #0a0a0a; } .ds-grp { display: flex; justify-content: space-between; padding: 8px; font-weight: 500; } .ds-well { padding: 1.25rem; border-radius: 4px; background: #d4d6cf; box-shadow: inset 0 0 0 1px #bdc0b7; } .ds-well code { font-family: var(--font-mono, 'Martian Mono Variable', monospace); font-size: 0.75rem; } .ds-station h3 { margin: 1.5rem 0 0; font-variation-settings: 'wdth' 90; font-weight: 750; font-size: 1.375rem; line-height: 1.15; letter-spacing: -0.01em; } .ds-station p { margin: 0.6rem 0 0; color: #434741; line-height: 1.55; }"
+    },
+    {
+      "name": "App Window Replica",
+      "kind": "custom",
+      "refersTo": "app-window",
+      "description": "Faithful .gx replica of the shipped Gomander window: sidebar command rows (running green, Error Pattern red) beside a white xterm.",
+      "html": "<div class=\"ds-gx\"><div class=\"ds-gx__bar\"><span class=\"ds-gx__lights\"><i></i><i></i><i></i></span>Gomander</div><div class=\"ds-gx__body\"><ul class=\"ds-gx__side\"><li class=\"ds-gx__cmd\" data-state=\"running\"><span>web</span><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect width=\"18\" height=\"18\" x=\"3\" y=\"3\" rx=\"2\"/></svg></li><li class=\"ds-gx__cmd\" data-state=\"error\" data-active><span>worker</span><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect width=\"18\" height=\"18\" x=\"3\" y=\"3\" rx=\"2\"/></svg></li><li class=\"ds-gx__cmd\"><span>docs</span><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"6 3 20 12 6 21 6 3\"/></svg></li></ul><div class=\"ds-gx__term\"><p><span class=\"ts\">[10:20:41] </span><b>pnpm run worker</b></p><p><span class=\"ts\">[10:20:41] </span><span class=\"y\">[nodemon] watching path(s): src/**/*</span></p><p><span class=\"ts\">[10:21:07] </span><span class=\"r\">[nodemon] app crashed - waiting for file changes</span></p></div></div></div>",
+      "css": ".ds-gx { overflow: hidden; border-radius: 10px; background: #ffffff; color: #0a0a0a; font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 14px; line-height: 1.4; box-shadow: 0 0 0 1px rgb(0 0 0 / 0.14), 0 30px 60px -30px rgb(30 34 30 / 0.55), 0 12px 24px -16px rgb(30 34 30 / 0.35); } .ds-gx__bar { position: relative; display: flex; align-items: center; justify-content: center; height: 32px; background: #f6f6f6; border-bottom: 1px solid #e5e5e5; font-size: 13px; font-weight: 600; color: #4d4d4d; } .ds-gx__lights { position: absolute; left: 12px; display: flex; gap: 8px; } .ds-gx__lights i { width: 12px; height: 12px; border-radius: 50%; background: #ff5f57; } .ds-gx__lights i:nth-child(2) { background: #febc2e; } .ds-gx__lights i:nth-child(3) { background: #d4d4d4; } .ds-gx__body { display: grid; grid-template-columns: 150px minmax(0, 1fr); min-height: 9rem; } .ds-gx__side { list-style: none; margin: 0; padding: 8px 0; background: #fafafa; border-right: 1px solid #e5e5e5; } .ds-gx__cmd { display: flex; align-items: center; justify-content: space-between; margin: 0 6px 2px; padding: 7px 10px; border-radius: 6px; color: #0a0a0a; cursor: pointer; transition: background-color 180ms ease; } .ds-gx__cmd svg { color: #737373; } .ds-gx__cmd:hover { background: #f5f5f5; } .ds-gx__cmd[data-state='running'] { background: #dcfce7; } .ds-gx__cmd[data-state='error'] { background: #fee2e2; } .ds-gx__term { padding: 10px 12px; font-family: ui-monospace, Menlo, Monaco, 'Courier New', monospace; font-size: 12px; line-height: 1.45; overflow: hidden; } .ds-gx__term p { margin: 0; white-space: pre; overflow: hidden; text-overflow: ellipsis; } .ds-gx__term .ts { color: #666666; } .ds-gx__term b { color: #29b8db; } .ds-gx__term .y { color: #b5b500; } .ds-gx__term .r { color: #cd3131; }"
+    },
+    {
+      "name": "App Toast Replica",
+      "kind": "custom",
+      "refersTo": "app-toast",
+      "description": "The app's real missing-PATH toast, with its tooltip sibling; .gx only.",
+      "html": "<div class=\"ds-gxt\"><div class=\"ds-gxt__toast\"><p>A command may have failed because its executable wasn't found in your environment paths.</p><a href=\"#\" class=\"ds-gxt__action\">Learn more</a></div><span class=\"ds-gxt__tip\">3 commands running</span></div>",
+      "css": ".ds-gxt { display: grid; gap: 12px; justify-items: start; padding: 12px; background: #ffffff; font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif; color: #0a0a0a; } .ds-gxt__toast { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 8px; background: #ffffff; border: 1px solid #e5e5e5; box-shadow: 0 4px 12px rgb(0 0 0 / 0.1); font-size: 13px; } .ds-gxt__toast p { margin: 0; } .ds-gxt__action { flex: none; padding: 5px 9px; border-radius: 4px; background: #171717; color: #fafafa; font-size: 12px; font-weight: 500; text-decoration: none; } .ds-gxt__action:hover { background: #262626; } .ds-gxt__action:focus-visible { outline: 2px solid #0a0a0a; outline-offset: 2px; } .ds-gxt__tip { padding: 6px 12px; border-radius: 6px; background: #171717; color: #fafafa; font-size: 12px; }"
+    },
+    {
+      "name": "Screen Snippet",
+      "kind": "custom",
+      "refersTo": "screen-snippet",
+      "description": "Inset screen for shell snippets on the console: phosphor text, dim comments, GO prompt, HOLD output.",
+      "html": "<pre class=\"ds-snip\"><span class=\"d\"># the first port that answers is Gomander</span>\n<span class=\"g\">$</span> curl -s localhost:9001/discovery\n<span class=\"h\">{\"app\":\"Gomander\"}</span></pre>",
+      "css": ".ds-snip { margin: 0; padding: 1.25rem; background: #101311; color: #d3e4d7; font-family: var(--font-mono, 'Martian Mono Variable', monospace); font-size: 0.75rem; line-height: 1.8; font-variant-ligatures: none; overflow-x: auto; } .ds-snip .d { color: #869a8c; } .ds-snip .g { color: #4fd585; } .ds-snip .h { color: #ffc34d; } .ds-snip:focus-visible { outline: 2px solid #1a1c1a; outline-offset: 3px; }"
+    },
+    {
+      "name": "Checklist Sheet",
+      "kind": "card",
+      "refersTo": "checklist-sheet",
+      "description": "Typed procedure paper with pencil strike-throughs; shows the old way only.",
+      "html": "<article class=\"ds-sheet\"><header class=\"ds-sheet__head\"><span>Morning procedure</span><span>Rev. 14</span></header><ol class=\"ds-sheet__steps\"><li><span class=\"ds-sheet__n\">01</span><s>Open a terminal, cd into the API</s><span class=\"ds-sheet__box\"></span></li><li><span class=\"ds-sheet__n\">02</span><s>docker compose up postgres</s><span class=\"ds-sheet__box\"></span></li></ol></article>",
+      "css": ".ds-sheet { background: #f2f0e9; padding: 0 1.5rem 0.5rem; border-radius: 2px; box-shadow: 0 0 0 1px #a6a99f; } .ds-sheet__head { display: flex; justify-content: space-between; padding: 1rem 0 0.9rem; border-bottom: 2px solid #1a1c1a; font-family: var(--font-display, 'Archivo Variable', sans-serif); font-variation-settings: 'wdth' 115; font-weight: 700; font-size: 0.6875rem; letter-spacing: 0.16em; text-transform: uppercase; color: #434741; } .ds-sheet__steps { list-style: none; margin: 0; padding: 0; } .ds-sheet__steps li { display: grid; grid-template-columns: 1.75rem 1fr auto; align-items: baseline; gap: 0.9rem; padding: 0.7rem 0; font-family: var(--font-mono, 'Martian Mono Variable', monospace); font-size: 0.75rem; color: #1a1c1a; line-height: 1.5; } .ds-sheet__steps li + li { border-top: 1px solid #bdc0b7; } .ds-sheet__n { font-size: 0.6875rem; color: #52564f; } .ds-sheet__steps s { text-decoration-color: #b0301f; text-decoration-thickness: 2px; } .ds-sheet__box { width: 0.8rem; height: 0.8rem; align-self: center; box-shadow: inset 0 0 0 1px #52564f; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Flight Director's Console",
+    "overview": "The site is an Apollo-era mission operations console, drawn flat and precise. Painted putty-grey panels carry engraved legends, square illuminated pushbuttons and lamps are the only things that glow, and dark screens are set into the hardware for machine text. The console is the page's world: the frame, the stations, the controls and the labels.\n\nWhat sits *on* that console is the product itself. Every demo of Gomander is a faithful replica of the shipped desktop app: its white window, its sidebar command rows, its xterm terminal, its toasts and tooltips, in the app's own light theme. The hero is the real Gomander window running an example project. Each feature station holds a crop of the real UI. The console frames the product; it never reinvents it.\n\nDensity is instrument-panel density. Rows are tight, labels are small and tracked wide, and a panel's divisions are 1px seams rather than gutters between floating cards. Big, condensed Archivo headlines give each section a single loud statement. The build rejects the category default of a dark hero and an icon-card grid; the one fully dark band (the app display) is a screen set into the console, not a mood. Motion on console hardware follows lamp physics: instant on (60ms), slow decay (900ms), 1px presses. Motion inside replicas is the app's own.",
+    "keyCharacteristics": [
+      "Warm-grey painted console surfaces (`console` family) with dark inset screens (`screen` family).",
+      "On the console, colour comes only from lamps (GO green, HOLD amber, ABORT red), plus a pencil red on checklist paper.",
+      "Product demos are bounded `.gx` replicas of the real app: white window, system font, shadcn neutrals, xterm ANSI colours.",
+      "Archivo on its width axis sets everything human on the console; Martian Mono sets only machine text.",
+      "Panels are split by 1px seams with bevelled bezels, and lifted by one wide, soft ambient shadow.",
+      "Instant-on, slow-decay state changes on hardware. Reduced motion collapses every transition."
+    ],
+    "rules": [
+      {
+        "name": "The Lamps-Only Rule",
+        "body": "On console surfaces the only chromatic colour is a lit lamp (GO, HOLD, ABORT) or pencil on paper. Screens may carry `go-lit` prompts and `hold-lit` output because that is what a terminal prints.",
+        "section": "colors"
+      },
+      {
+        "name": "The Replica Border Rule",
+        "body": "The app palette exists only inside a `.gx` replica, and console tokens never enter one. No `app-*` or `term-*` value may be used on console hardware, and no lamp colour may be painted inside the app window.",
+        "section": "colors"
+      },
+      {
+        "name": "The Screen-Is-Inset Rule",
+        "body": "Dark `screen` surfaces are always set into grey hardware (a panel, a bezel or the console band). Never make a whole page or hero dark for mood.",
+        "section": "colors"
+      },
+      {
+        "name": "The Machine-Voice Rule",
+        "body": "On the console, Martian Mono is only for text a machine would print or a user would type: shell lines, paths, endpoints, output, counters. Headings, labels, buttons and prose never use mono.",
+        "section": "typography"
+      },
+      {
+        "name": "The Width-Axis Rule",
+        "body": "Console hierarchy comes from Archivo's `wdth` axis as much as from size: headlines condense (72–92) and legends expand (108–118). Don't reach for a second sans outside replicas.",
+        "section": "typography"
+      },
+      {
+        "name": "The Shipped-Type Rule",
+        "body": "Inside `.gx`, type is reset to the app's own (system sans, `letter-spacing: normal`, `font-variation-settings: normal`). Archivo and Martian Mono never appear inside a replica window.",
+        "section": "typography"
+      },
+      {
+        "name": "The Hardware-Only Depth Rule",
+        "body": "Every console shadow must be explainable as a bevel, a seam, a recess, a lamp glow, the desk shadow, or a replica resting on the desk. If it's just \"cards floating\", remove it.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do show the product only as a `.gx` replica of the shipped app, using the app's own palette, system font, radii, icons and strings.",
+      "Do keep every console surface grey (`console`, `console-raised`, `console-sunk`) and let only lamps carry colour.",
+      "Do switch lit states in 60ms and let them decay over 900ms on `cubic-bezier(0.16, 1, 0.3, 1)`.",
+      "Do join panels with 1px `seam` gaps on a seam background, and lift a group once with the panel ambient shadow.",
+      "Do set commands, paths, output and counts on the console in Martian Mono with ligatures off and tabular numbers.",
+      "Do use engraved legends as labels painted on a panel or instrument, naming the readout they sit on (STN 1 · OUTPUT, LOCAL API).",
+      "Do press pushbuttons down by 1px. Hover brightens the face and never lifts the button.",
+      "Do light only one GO pushbutton per decision group."
+    ],
+    "donts": [
+      "Don't invent product UI. No made-up consoles, dashboards or status boards standing in for the app.",
+      "Don't let replica tokens (`app-*`, `term-*`, system font, app radii) leak onto console hardware, or console tokens (lamps, Archivo, Martian Mono) into a replica.",
+      "Don't introduce a new hue for decoration on the console. Blue, purple and gradient accents don't exist there.",
+      "Don't set a full dark theme or dark hero. Screens are always inset in grey hardware.",
+      "Don't put an engraved label above a section headline as an eyebrow. Headlines stand alone.",
+      "Don't use Martian Mono for headings, buttons or prose.",
+      "Don't use pills, large radii, hard offset shadows or floating card stacks on the console.",
+      "Don't go lighter than `ink-3` for text on light console surfaces; it is the AA floor.",
+      "Don't use floaty easing, scroll fade-ins or bounces on console hardware. State changes behave like lamps."
+    ]
+  }
+}

@@ -1,0 +1,555 @@
+---
+import Icon from '../components/Icon.astro';
+import AppIcon from '../components/AppIcon.astro';
+import { GROUPS, PACKAGE_SCRIPTS, VERSION, WARNINGS } from '../data/content';
+
+const [firstWarning] = WARNINGS;
+---
+
+<section class="stations" id="stations">
+	<div class="wrap">
+		<header class="stations__head">
+			<h2 class="section-title">One console. Every process in sight.</h2>
+			<p class="section-lede">
+				Gomander keeps each Command of your project on its own station: what it runs, where it runs, and what
+				it is saying right now.
+			</p>
+		</header>
+
+		<div class="stations__grid">
+			<article class="station station--terminal">
+				<span class="engraved station__label">Stn 1 · Output</span>
+				<div class="instrument gx shot" aria-hidden="true">
+					<div class="gx-term">
+						<p><span class="ts">[10:14:02] </span><span class="cmdline">pnpm dev</span></p>
+						<p><span class="ts">[10:14:03] </span><span class="a-green">VITE v7.1.4</span>  ready in 412 ms</p>
+						<p class="term-link-line"><span class="ts">[10:14:03] </span>  ➜  Local:   <span class="a-cyan a-link term-link" data-tip="Click to open in your browser">http://localhost:5173/</span></p>
+						<p><span class="ts">[10:14:09] </span><span class="a-cyan">[vite]</span> hmr update /src/pages/Cart.tsx</p>
+						<p><span class="ts">[10:14:15] </span><span class="a-red">[vite] Internal server error: Failed to resolve import "./useCart"</span></p>
+						<p><span class="ts">[10:14:21] </span><span class="a-cyan">[vite]</span> hmr update /src/pages/Cart.tsx</p>
+					</div>
+				</div>
+				<h3>A real terminal for every Command</h3>
+				<p>
+					Full ANSI colour, clickable links, a timestamp on every line and 10,000 lines of scrollback.
+					<kbd>⌘F</kbd> / <kbd>Ctrl F</kbd> jumps from match to match.
+				</p>
+			</article>
+
+			<article class="station station--caution" data-warnings>
+				<span class="engraved station__label">Stn 2 · Caution &amp; warning</span>
+				<div class="switch" role="tablist" aria-label="Warnings Gomander raises">
+					{WARNINGS.map((w, i) => (
+						<button
+							type="button"
+							role="tab"
+							id={`warn-tab-${w.id}`}
+							aria-controls={`warn-panel-${w.id}`}
+							aria-selected={i === 0 ? 'true' : 'false'}
+							tabindex={i === 0 ? 0 : -1}
+							data-tab={w.id}
+							data-title={w.title}
+							data-body={w.body}
+						>
+							{w.label}
+						</button>
+					))}
+				</div>
+
+				<div class="instrument gx shot warn">
+					<div class="warn__panel" role="tabpanel" id="warn-panel-error-pattern" aria-labelledby="warn-tab-error-pattern" data-panel="error-pattern">
+						<div class="split">
+							<ul class="gx-sidebar split__side" aria-hidden="true">
+								<li class="gx-cmd" data-state="running"><span class="gx-cmd__name"><span>web</span></span><AppIcon name="square" /></li>
+								<li class="gx-cmd" data-state="error" data-active><span class="gx-cmd__name"><span>worker</span></span><AppIcon name="square" /></li>
+								<li class="gx-cmd" data-state="running"><span class="gx-cmd__name"><span>api</span></span><AppIcon name="square" /></li>
+							</ul>
+							<div class="gx-term" aria-hidden="true">
+								<p><span class="ts">[10:20:41] </span><span class="cmdline">pnpm run worker</span></p>
+								<p><span class="ts">[10:20:41] </span><span class="a-yellow">[nodemon] watching path(s): src/**/*</span></p>
+								<p><span class="ts">[10:21:07] </span><span class="a-red">TypeError: Cannot read properties of undefined</span></p>
+								<p><span class="ts">[10:21:07] </span><span class="a-red">[nodemon] app crashed - waiting for file changes</span></p>
+							</div>
+						</div>
+					</div>
+
+					<div class="warn__panel" role="tabpanel" id="warn-panel-path" aria-labelledby="warn-tab-path" data-panel="path" hidden>
+						<div class="gx-term warn__term" aria-hidden="true">
+							<p><span class="ts">[10:32:10] </span><span class="cmdline">poetry run uvicorn app.main:app --reload</span></p>
+							<p><span class="ts">[10:32:10] </span>sh: poetry: command not found</p>
+						</div>
+						<div class="gx-toast warn__toast">
+							<p>A command may have failed because its executable wasn't found in your environment paths.</p>
+							<span class="gx-toast__action">Learn more</span>
+						</div>
+					</div>
+
+					<div class="warn__panel" role="tabpanel" id="warn-panel-running" aria-labelledby="warn-tab-running" data-panel="running" hidden>
+						<div class="gx-sidebar warn__side" aria-hidden="true">
+							<div class="warn__row"><AppIcon name="chevron-right" /> Commands</div>
+							<div class="gx-group-head">
+								<span class="gx-group-name"><AppIcon name="folder" /><span>dev stack</span></span>
+								<span class="gx-group-actions"><span>(3/5)</span><AppIcon name="play" /><AppIcon name="square" /></span>
+							</div>
+							<div class="warn__foot">
+								<AppIcon name="settings" />
+								<span class="warn__dot">
+									<span class="gx-tooltip">3 commands running</span>
+									<span class="gx-dot" data-on></span>
+								</span>
+								<span class="warn__version">{VERSION}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<h3 data-title-out>{firstWarning.title}</h3>
+				<p data-body-out aria-live="polite">{firstWarning.body}</p>
+			</article>
+
+			<article class="station station--groups">
+				<span class="engraved station__label">Stn 3 · Group bus</span>
+				<div class="instrument gx shot gx-sidebar groups" aria-hidden="true">
+					<div class="groups__label">Command groups <AppIcon name="arrow-up-down" size={14} /></div>
+					{GROUPS.map((g) => (
+						<div class="gx-group-head">
+							<span class="gx-group-name"><AppIcon name="folder" /><span>{g.name}</span></span>
+							<span class="gx-group-actions">
+								<span>({g.running}/{g.total})</span>
+								{g.running < g.total && <AppIcon name="play" />}
+								{g.running > 0 && <AppIcon name="square" />}
+							</span>
+						</div>
+					))}
+				</div>
+				<h3>Command Groups</h3>
+				<p>
+					Bundle the Commands that belong together and launch or stop them as one. Every group shows how many
+					of its Commands are running.
+				</p>
+			</article>
+
+			<article class="station station--projects">
+				<span class="engraved station__label">Stn 4 · Project load</span>
+				<div class="instrument import" aria-hidden="true">
+					<pre class="import__json"><span class="c-dim">"scripts": {'{'}</span>
+{PACKAGE_SCRIPTS.map((s) => <>{'  '}<span class="c-key">"{s.script}"</span>: <span class="c-str">"{s.line}"</span>,{'\n'}</>)}<span class="c-dim">{'}'}</span></pre>
+					<Icon name="arrow-right" class="import__arrow" />
+					<ul class="gx shot gx-sidebar import__cmds">
+						{PACKAGE_SCRIPTS.map((s) => (
+							<li class="gx-cmd" data-state="idle"><span class="gx-cmd__name"><span>{s.script}</span></span><AppIcon name="play" /></li>
+						))}
+					</ul>
+				</div>
+				<h3>Projects, set up in seconds</h3>
+				<p>
+					Commands live under a Project, each with its own working directory, relative or absolute. Start a
+					Project from a <code>package.json</code>, then export it so a teammate imports exactly the Commands
+					they need.
+				</p>
+			</article>
+		</div>
+	</div>
+</section>
+
+<script>
+	const root = document.querySelector<HTMLElement>('[data-warnings]');
+	if (root) {
+		const tabs = [...root.querySelectorAll<HTMLButtonElement>('[data-tab]')];
+		const panels = [...root.querySelectorAll<HTMLElement>('[data-panel]')];
+		const title = root.querySelector<HTMLElement>('[data-title-out]')!;
+		const body = root.querySelector<HTMLElement>('[data-body-out]')!;
+
+		const select = (tab: HTMLButtonElement, focus = false) => {
+			for (const t of tabs) {
+				const on = t === tab;
+				t.setAttribute('aria-selected', String(on));
+				t.tabIndex = on ? 0 : -1;
+			}
+			for (const p of panels) p.hidden = p.dataset.panel !== tab.dataset.tab;
+			title.textContent = tab.dataset.title ?? '';
+			body.textContent = tab.dataset.body ?? '';
+			if (focus) tab.focus();
+		};
+
+		tabs.forEach((tab, i) => {
+			tab.addEventListener('click', () => select(tab));
+			tab.addEventListener('keydown', (e) => {
+				const step = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+				if (!step) return;
+				e.preventDefault();
+				select(tabs[(i + step + tabs.length) % tabs.length], true);
+			});
+		});
+	}
+</script>
+
+<style>
+	.stations {
+		padding-block: clamp(5rem, 10vw, 9rem);
+		border-bottom: 1px solid var(--seam);
+	}
+
+	.stations__head {
+		display: grid;
+		grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+		gap: 1.5rem clamp(2rem, 5vw, 5rem);
+		align-items: end;
+		margin-bottom: clamp(3rem, 6vw, 4.5rem);
+	}
+
+	.stations__head .section-lede {
+		margin: 0;
+	}
+
+	.stations__grid {
+		display: grid;
+		grid-template-columns: repeat(12, minmax(0, 1fr));
+		gap: 1px;
+		background: var(--seam);
+		border-radius: 6px;
+		overflow: hidden;
+		box-shadow:
+			0 0 0 1px var(--seam),
+			0 30px 60px -40px rgb(30 34 30 / 0.5);
+	}
+
+	.station {
+		display: flex;
+		flex-direction: column;
+		padding: clamp(1.25rem, 2.5vw, 2rem);
+		background: var(--console-raised);
+	}
+
+	.station--terminal,
+	.station--projects {
+		grid-column: span 7;
+	}
+
+	.station--caution,
+	.station--groups {
+		grid-column: span 5;
+	}
+
+	.station__label {
+		display: block;
+		margin-bottom: 0.9rem;
+		color: var(--ink-3);
+	}
+
+	.station h3 {
+		margin: 1.5rem 0 0;
+		font-variation-settings: 'wdth' 90;
+		font-weight: 750;
+		font-size: 1.375rem;
+		line-height: 1.15;
+		letter-spacing: -0.01em;
+	}
+
+	.station > p {
+		margin: 0.6rem 0 0;
+		color: var(--ink-2);
+		max-width: 50ch;
+	}
+
+	.station code,
+	.station kbd {
+		font-size: 0.8125em;
+		padding: 0.1em 0.35em;
+		border-radius: 2px;
+		background: var(--console-sunk);
+		color: var(--ink);
+	}
+
+	.shot {
+		overflow: hidden;
+		border-radius: 8px;
+		background: #ffffff;
+		box-shadow:
+			0 0 0 1px rgb(0 0 0 / 0.12),
+			0 10px 24px -16px rgb(30 34 30 / 0.45);
+	}
+
+	.station--terminal .instrument {
+		overflow: visible;
+	}
+
+	.station--terminal .gx-term {
+		border-radius: inherit;
+		overflow: visible;
+	}
+
+	.term-link-line {
+		overflow: visible !important;
+	}
+
+	.term-link {
+		position: relative;
+		cursor: pointer;
+	}
+
+	.term-link::after {
+		content: attr(data-tip);
+		position: absolute;
+		bottom: calc(100% + 8px);
+		left: 50%;
+		padding: 6px 12px;
+		border-radius: 6px;
+		background: #171717;
+		color: #fafafa;
+		font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+		font-size: 12px;
+		font-weight: 400;
+		white-space: nowrap;
+		text-decoration: none;
+		pointer-events: none;
+		opacity: 0;
+		transform: translate(-50%, 4px);
+		transition:
+			opacity 150ms ease,
+			transform 150ms ease;
+	}
+
+	.term-link:hover::after {
+		opacity: 1;
+		transform: translate(-50%, 0);
+	}
+
+	.switch {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.35rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.switch button {
+		padding: 0.45rem 0.7rem;
+		border: 0;
+		border-radius: 3px;
+		background: var(--console);
+		color: var(--ink-2);
+		font-family: var(--font-display);
+		font-variation-settings: 'wdth' 108;
+		font-weight: 650;
+		font-size: 0.6875rem;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		cursor: pointer;
+		box-shadow: inset 0 0 0 1px var(--seam);
+		transition:
+			background-color 200ms var(--ease-out),
+			color 200ms var(--ease-out);
+	}
+
+	.switch button:hover {
+		color: var(--ink);
+	}
+
+	.switch button[aria-selected='true'] {
+		background: var(--ink);
+		color: var(--console-raised);
+		box-shadow: none;
+	}
+
+	.warn {
+		position: relative;
+		height: 11.5rem;
+		overflow: visible;
+	}
+
+	.warn__panel {
+		height: 100%;
+		border-radius: inherit;
+		overflow: hidden;
+	}
+
+	.warn__panel[data-panel='running'] {
+		overflow: visible;
+	}
+
+	.warn:has([data-panel='running']:not([hidden])) {
+		background: transparent;
+		box-shadow: none;
+	}
+
+	.split {
+		display: grid;
+		grid-template-columns: 8.5rem minmax(0, 1fr);
+		height: 100%;
+	}
+
+	.split__side {
+		list-style: none;
+		margin: 0;
+		padding: 8px 0;
+	}
+
+	.split__side .gx-cmd {
+		margin-inline: 6px;
+		padding-left: 10px;
+	}
+
+	.split__side svg,
+	.import__cmds svg {
+		color: var(--gx-muted);
+		flex: none;
+	}
+
+	.warn__term {
+		height: 100%;
+	}
+
+	.warn__toast {
+		position: absolute;
+		right: 12px;
+		bottom: 12px;
+		left: 12px;
+	}
+
+	.warn__toast p {
+		margin: 0;
+	}
+
+	.warn__side {
+		display: flex;
+		flex-direction: column;
+		width: min(100%, 19rem);
+		height: 100%;
+		margin-inline: auto;
+		border-radius: 8px;
+		box-shadow:
+			0 0 0 1px rgb(0 0 0 / 0.12),
+			0 10px 24px -16px rgb(30 34 30 / 0.45);
+	}
+
+	.warn__row {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		padding: 10px 12px 4px;
+		font-weight: 500;
+	}
+
+	.warn__foot {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		margin-top: auto;
+		padding: 10px 12px;
+		color: var(--gx-muted);
+	}
+
+	.warn__dot {
+		position: relative;
+		display: inline-flex;
+	}
+
+	.warn__dot .gx-tooltip {
+		z-index: 2;
+		position: absolute;
+		bottom: calc(100% + 10px);
+		left: 50%;
+		transform: translateX(-50%);
+		white-space: nowrap;
+	}
+
+	.warn__version {
+		margin-left: auto;
+		font-size: 13px;
+	}
+
+	.groups {
+		padding: 6px 4px 8px;
+		border-right: 0;
+	}
+
+	.groups__label {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		padding: 8px 12px 6px;
+		font-size: 13px;
+		color: var(--gx-muted);
+	}
+
+	.import {
+		display: grid;
+		grid-template-columns: minmax(0, 1.3fr) auto minmax(0, 1fr);
+		align-items: center;
+		gap: 1.25rem;
+		padding: 1.25rem;
+		border-radius: 4px;
+		background: var(--console);
+		box-shadow: inset 0 0 0 1px var(--seam-soft);
+	}
+
+	.import__json {
+		margin: 0;
+		font-size: 0.75rem;
+		line-height: 1.8;
+		color: var(--ink);
+		overflow: hidden;
+	}
+
+	.c-dim {
+		color: var(--ink-3);
+	}
+
+	.c-key {
+		color: var(--ink);
+		font-weight: 600;
+	}
+
+	.c-str {
+		color: var(--ink-2);
+	}
+
+	:global(.import__arrow) {
+		width: 1.5rem;
+		height: 1.5rem;
+		color: var(--ink-3);
+	}
+
+	.import__cmds {
+		list-style: none;
+		margin: 0;
+		padding: 8px 0 6px;
+		border-right: 0;
+	}
+
+	.import__cmds .gx-cmd {
+		padding-left: 10px;
+	}
+
+	@media (max-width: 64rem) {
+		.stations__head {
+			grid-template-columns: minmax(0, 1fr);
+		}
+
+		.station--terminal,
+		.station--caution,
+		.station--groups,
+		.station--projects {
+			grid-column: span 12;
+		}
+	}
+
+	@media (max-width: 36rem) {
+		.split {
+			grid-template-columns: 6.5rem minmax(0, 1fr);
+		}
+
+		.warn {
+			height: 13rem;
+		}
+
+		.import {
+			grid-template-columns: minmax(0, 1fr);
+		}
+
+		:global(.import__arrow) {
+			transform: rotate(90deg);
+			justify-self: center;
+		}
+	}
+</style>

@@ -1,0 +1,132 @@
+---
+import Icon from '../components/Icon.astro';
+import { URLS, VERSION } from '../data/content';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<header class="header">
+	<div class="wrap header__row">
+		<a class="brand" href={`${base}/`} aria-label="Gomander home">
+			<img src={`${base}/gomander-logo.webp`} alt="" width="36" height="36" />
+			<span class="brand__name">Gomander</span>
+			<span class="readout" aria-label={`Current release ${VERSION}`}>{VERSION}</span>
+		</a>
+
+		<nav class="nav" aria-label="Primary">
+			<a href="#stations">Features</a>
+			<a href="#uplink">API</a>
+			<a href={URLS.repo} target="_blank" rel="noopener" class="nav__gh">
+				<Icon name="github" />
+				<span>GitHub</span>
+			</a>
+		</nav>
+
+		<a class="pushbutton pushbutton--go header__cta" href="#download">
+			<Icon name="download" />
+			<span>Download</span>
+		</a>
+	</div>
+</header>
+
+<style>
+	.header {
+		position: sticky;
+		top: 0;
+		z-index: 20;
+		background: var(--console);
+		border-bottom: 1px solid var(--seam);
+		box-shadow: 0 1px 0 rgb(255 255 255 / 0.5);
+	}
+
+	.header__row {
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+		min-height: 4.25rem;
+	}
+
+	.brand {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.7rem;
+		color: var(--ink);
+		text-decoration: none;
+	}
+
+	.brand img {
+		border-radius: 8px;
+		box-shadow: 0 0 0 1px var(--seam);
+	}
+
+	.brand__name {
+		font-variation-settings: 'wdth' 118;
+		font-weight: 800;
+		font-size: 1rem;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	.readout {
+		font-family: var(--font-mono);
+		font-size: 0.6875rem;
+		font-variant-numeric: tabular-nums;
+		padding: 0.2rem 0.45rem;
+		border-radius: 2px;
+		background: var(--screen);
+		color: var(--hold-lit);
+		letter-spacing: 0.04em;
+	}
+
+	.nav {
+		display: flex;
+		align-items: center;
+		gap: 1.75rem;
+		margin-left: auto;
+	}
+
+	.nav a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		color: var(--ink-2);
+		text-decoration: none;
+		font-variation-settings: 'wdth' 110;
+		font-weight: 600;
+		font-size: 0.75rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		transition: color 160ms var(--ease-out);
+	}
+
+	.nav a:hover {
+		color: var(--ink);
+	}
+
+	.header__cta {
+		min-height: 2.5rem;
+		padding: 0 1rem;
+		font-size: 0.75rem;
+	}
+
+	@media (max-width: 52rem) {
+		.nav a:not(.nav__gh) {
+			display: none;
+		}
+	}
+
+	@media (max-width: 30rem) {
+		.header__row {
+			gap: 0.75rem;
+		}
+
+		.nav,
+		.readout {
+			display: none;
+		}
+
+		.header__cta {
+			margin-left: auto;
+		}
+	}
+</style>

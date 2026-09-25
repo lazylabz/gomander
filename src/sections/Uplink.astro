@@ -1,0 +1,246 @@
+---
+import Icon from '../components/Icon.astro';
+import { ENDPOINTS, URLS } from '../data/content';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<section class="uplink" id="uplink">
+	<div class="wrap uplink__grid">
+		<div class="uplink__copy">
+			<h2 class="section-title">Fly it from anywhere.</h2>
+			<p class="section-lede">
+				Gomander runs a small REST API on your machine. Your scripts, Raycast or an AI agent can list your
+				Commands, launch a group and stop it again, without opening the window.
+			</p>
+			<ul class="uplink__links">
+				<li>
+					<a href={URLS.raycast} target="_blank" rel="noopener">
+						Raycast extension <Icon name="arrow-up-right" />
+					</a>
+				</li>
+				<li>
+					<a href={URLS.openapi} target="_blank" rel="noopener">
+						OpenAPI spec <Icon name="arrow-up-right" />
+					</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="uplink__panel">
+			<div class="endpoints">
+				<div class="endpoints__bar">
+					<span class="engraved">Local API</span>
+					<code>localhost:9001–9100</code>
+				</div>
+				<ul>
+					{ENDPOINTS.map((e) => (
+						<li>
+							<span class="lamp">{e.method}</span>
+							<code class="endpoints__path">{e.path}</code>
+							<span class="endpoints__note">{e.note}</span>
+						</li>
+					))}
+				</ul>
+			</div>
+
+			<pre class="snippet"><code><span class="c-dim"># the first port that answers is Gomander</span>
+<span class="c-prompt">$</span> curl localhost:9001/discovery
+<span class="c-out">{'{'}"app":"Gomander"{'}'}</span>
+
+<span class="c-prompt">$</span> curl -X POST localhost:9001/command-groups/$ID/run</code></pre>
+		</div>
+
+		<figure class="raycast">
+			<img
+				src={`${base}/raycast-command-groups.webp`}
+				alt="Raycast window listing four Gomander Command Groups (Editor, Panel, Favorites, Playground) with a “Start command group” action."
+				width="1400"
+				height="875"
+				loading="lazy"
+				decoding="async"
+			/>
+			<figcaption>The official Raycast extension, built on the same API.</figcaption>
+		</figure>
+	</div>
+</section>
+
+<style>
+	.uplink {
+		padding-block: clamp(5rem, 10vw, 9rem);
+		border-bottom: 1px solid var(--seam);
+	}
+
+	.uplink__grid {
+		display: grid;
+		grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+		gap: clamp(2.5rem, 5vw, 5rem);
+		align-items: start;
+	}
+
+	.uplink__copy {
+		position: sticky;
+		top: 7rem;
+	}
+
+	.uplink__links {
+		list-style: none;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem 1.75rem;
+		margin: 2rem 0 0;
+		padding: 0;
+	}
+
+	.uplink__links a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		color: var(--ink);
+		font-weight: 650;
+		text-decoration: none;
+		border-bottom: 1px solid var(--ink);
+		padding-bottom: 0.1rem;
+	}
+
+	.uplink__links .icon {
+		width: 0.95rem;
+		height: 0.95rem;
+		transition: transform 200ms var(--ease-out);
+	}
+
+	.uplink__links a:hover .icon {
+		transform: translate(2px, -2px);
+	}
+
+	.uplink__panel {
+		display: grid;
+		gap: 1px;
+		background: var(--seam);
+		border-radius: 6px;
+		overflow: hidden;
+		box-shadow:
+			0 0 0 1px var(--seam),
+			0 30px 60px -40px rgb(30 34 30 / 0.5);
+	}
+
+	.endpoints {
+		background: var(--console-raised);
+	}
+
+	.endpoints__bar {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		padding: 0.9rem 1.25rem;
+		border-bottom: 1px solid var(--seam-soft);
+	}
+
+	.endpoints__bar code {
+		font-size: 0.6875rem;
+		color: var(--ink-2);
+	}
+
+	.endpoints ul {
+		list-style: none;
+		margin: 0;
+		padding: 0.4rem 0;
+	}
+
+	.endpoints li {
+		display: grid;
+		grid-template-columns: 3.75rem minmax(0, auto) minmax(0, 1fr);
+		align-items: center;
+		gap: 1rem;
+		padding: 0.55rem 1.25rem;
+	}
+
+	.endpoints li + li {
+		border-top: 1px dashed var(--seam-soft);
+	}
+
+	.endpoints .lamp {
+		min-width: 0;
+	}
+
+	.endpoints__path {
+		font-size: 0.75rem;
+		white-space: nowrap;
+	}
+
+	.endpoints__note {
+		font-size: 0.875rem;
+		color: var(--ink-2);
+		text-align: right;
+	}
+
+	.snippet {
+		margin: 0;
+		padding: 1.25rem;
+		background: var(--screen);
+		color: var(--phosphor);
+		font-size: 0.75rem;
+		line-height: 1.8;
+		overflow-x: auto;
+	}
+
+	.c-dim {
+		color: var(--phosphor-dim);
+	}
+
+	.c-prompt {
+		color: var(--go-lit);
+	}
+
+	.c-out {
+		color: var(--hold-lit);
+	}
+
+	.raycast {
+		grid-column: 2;
+		margin: 0;
+	}
+
+	.raycast img {
+		display: block;
+		width: 100%;
+		height: auto;
+		border-radius: 6px;
+		box-shadow:
+			0 0 0 1px var(--seam),
+			0 30px 60px -40px rgb(30 34 30 / 0.6);
+	}
+
+	.raycast figcaption {
+		margin-top: 0.8rem;
+		font-size: 0.875rem;
+		color: var(--ink-2);
+	}
+
+	@media (max-width: 64rem) {
+		.uplink__grid {
+			grid-template-columns: minmax(0, 1fr);
+		}
+
+		.raycast {
+			grid-column: auto;
+		}
+
+		.uplink__copy {
+			position: static;
+		}
+	}
+
+	@media (max-width: 40rem) {
+		.endpoints li {
+			grid-template-columns: 3.75rem minmax(0, 1fr);
+		}
+
+		.endpoints__note {
+			grid-column: 2;
+			text-align: left;
+			margin-top: -0.6rem;
+		}
+	}
+</style>
