@@ -1,0 +1,120 @@
+---
+import Icon from '../../components/Icon.astro';
+import LaunchBoard from './LaunchBoard.astro';
+import { URLS } from '../../data/content';
+---
+
+<section class="hero">
+	<div class="wrap hero__grid">
+		<div class="hero__copy">
+			<h1 class="hero__title">Your whole dev stack, <em>go</em> for launch.</h1>
+			<p class="hero__lede">
+				Gomander is a free, open-source desktop app that starts, watches and organises every command your
+				project runs.
+			</p>
+
+			<div class="hero__actions">
+				<a class="pushbutton pushbutton--go" href="#download" data-os-cta>
+					<Icon name="download" />
+					<span data-os-label>Download Gomander</span>
+				</a>
+				<a class="pushbutton pushbutton--plain" href={URLS.repo} target="_blank" rel="noopener">
+					<Icon name="github" />
+					<span>GitHub</span>
+				</a>
+			</div>
+
+			<p class="hero__facts engraved">
+				<span>GPL-3</span><span>macOS</span><span>Windows</span><span>Linux</span>
+			</p>
+		</div>
+
+		<LaunchBoard />
+	</div>
+</section>
+
+<script>
+	const label = document.querySelector<HTMLElement>('[data-os-label]');
+	const platform = ((navigator as Navigator & { userAgentData?: { platform?: string } }).userAgentData?.platform ?? navigator.platform ?? '').toLowerCase();
+	const os = platform.includes('mac') ? 'macOS' : platform.includes('win') ? 'Windows' : platform.includes('linux') ? 'Linux' : null;
+	if (label && os) label.textContent = `Download for ${os}`;
+	if (os) document.documentElement.dataset.os = os === 'macOS' ? 'mac' : os.toLowerCase();
+</script>
+
+<style>
+	.hero {
+		padding-block: clamp(3rem, 7vw, 6.5rem) clamp(4rem, 8vw, 7.5rem);
+		border-bottom: 1px solid var(--seam);
+	}
+
+	.hero__grid {
+		display: grid;
+		grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+		gap: clamp(2.5rem, 5vw, 5rem);
+		align-items: center;
+	}
+
+	.hero__title {
+		font-variation-settings: 'wdth' 72;
+		font-weight: 850;
+		font-size: clamp(3rem, 1.6rem + 4.6vw, 5.75rem);
+		line-height: 0.92;
+		letter-spacing: -0.02em;
+		word-spacing: 0.06em;
+		margin: 0;
+	}
+
+	.hero__title em {
+		font-style: normal;
+		display: inline-block;
+		padding: 0 0.12em 0.02em;
+		margin-inline: -0.02em;
+		border-radius: 0.08em;
+		background: var(--accent);
+		box-shadow:
+			inset 0 0.04em 0 rgb(255 255 255 / 0.45),
+			inset 0 -0.04em 0 rgb(0 0 0 / 0.18);
+	}
+
+	.hero__lede {
+		margin: 1.75rem 0 0;
+		max-width: 34rem;
+		font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+		color: var(--ink-2);
+	}
+
+	.hero__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin-top: 2.25rem;
+	}
+
+	.hero__facts {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.35rem 1.1rem;
+		margin: 1.75rem 0 0;
+	}
+
+	.hero__facts span + span::before {
+		content: '';
+		display: inline-block;
+		width: 4px;
+		height: 4px;
+		margin-right: 1.1rem;
+		vertical-align: middle;
+		background: var(--seam);
+		border-radius: 50%;
+	}
+
+	@media (max-width: 64rem) {
+		.hero__grid {
+			grid-template-columns: minmax(0, 1fr);
+		}
+
+		.hero__copy {
+			max-width: 40rem;
+		}
+	}
+</style>

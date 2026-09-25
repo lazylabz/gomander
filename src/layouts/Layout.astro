@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css'
+import { VERSION } from '../data/content';
 
 export interface Props {
 	title?: string;
@@ -34,9 +35,6 @@ const imageURL = new URL(ogImage, Astro.site).href;
 		<link rel="canonical" href={canonicalUrl} />
 		{noIndex && <meta name="robots" content="noindex,nofollow" />}
 
-		<!-- Preconnect to external domains -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
 		<!-- Favicon -->
 		<link rel="icon" type="image/x-icon" href="/gomander/favicon.ico" />
@@ -64,7 +62,7 @@ const imageURL = new URL(ogImage, Astro.site).href;
 		<meta property="twitter:creator" content="@noeldev_" />
 
 		<!-- Additional meta tags -->
-		<meta name="theme-color" content="#000000" />
+		<meta name="theme-color" content="#d4d6cf" />
 		<meta name="application-name" content="Gomander" />
 		<meta name="generator" content={Astro.generator} />
 
@@ -77,7 +75,7 @@ const imageURL = new URL(ogImage, Astro.site).href;
 			"url": "https://lazylabz.github.io/gomander",
 			"applicationCategory": "DeveloperApplication",
 			"operatingSystem": ["Windows", "macOS", "Linux"],
-			"softwareVersion": "1.0",
+			"softwareVersion": VERSION.slice(1),
 			"author": {
 				"@type": "Organization",
 				"name": "Lazy Labz",
@@ -94,26 +92,7 @@ const imageURL = new URL(ogImage, Astro.site).href;
 			}
 		})} />
 	</head>
-	<body class="bg-gray-50">
+	<body>
 		<slot />
 	</body>
 </html>
-
-<style>
-	@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-
-	body {
-		font-family: 'Inter', sans-serif;
-	}
-
-	h1 {
-		font-size: 1rem;
-	}
-</style>

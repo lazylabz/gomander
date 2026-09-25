@@ -1,0 +1,194 @@
+---
+import Icon from '../components/Icon.astro';
+import { EXAMPLE_GROUP, MORNING_RITUAL } from '../data/content';
+---
+
+<section class="checklist">
+	<div class="wrap checklist__grid">
+		<div>
+			<h2 class="section-title">Twelve terminals is not a launch procedure.</h2>
+			<p class="section-lede">
+				Modern projects need a database, an API, a frontend, a worker and a webhook listener before you write a
+				line of code. So every morning starts with the same ritual, and every new teammate has to learn it by
+				heart.
+			</p>
+		</div>
+
+		<div class="sheet-stack">
+			<article class="sheet" aria-label="The usual morning procedure">
+				<header class="sheet__head">
+					<span>Morning procedure</span>
+					<span>Rev. 14</span>
+				</header>
+				<ol class="sheet__steps">
+					{MORNING_RITUAL.map((step, i) => (
+						<li>
+							<span class="sheet__n">{String(i + 1).padStart(2, '0')}</span>
+							<s>{step}</s>
+							<span class="sheet__box" aria-hidden="true"></span>
+						</li>
+					))}
+				</ol>
+			</article>
+
+			<div class="replacement">
+				<span class="engraved">With Gomander</span>
+				<p class="replacement__step">
+					<span class="lamp" data-state="go">01</span>
+					<span>Press <strong>Launch “{EXAMPLE_GROUP}”</strong>.</span>
+				</p>
+				<a class="replacement__link" href="#stations">
+					See what it runs
+					<Icon name="arrow-right" />
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.checklist {
+		padding-block: clamp(5rem, 10vw, 9rem);
+		border-bottom: 1px solid var(--seam);
+	}
+
+	.checklist__grid {
+		display: grid;
+		grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+		gap: clamp(2.5rem, 6vw, 6rem);
+		align-items: start;
+	}
+
+	.sheet-stack {
+		display: grid;
+		gap: 1.25rem;
+	}
+
+	.sheet {
+		background: var(--paper);
+		padding: 0 1.5rem 0.5rem;
+		border-radius: 2px;
+		box-shadow: 0 0 0 1px var(--seam);
+	}
+
+	.sheet__head {
+		display: flex;
+		justify-content: space-between;
+		padding: 1rem 0 0.9rem;
+		border-bottom: 2px solid var(--ink);
+		font-variation-settings: 'wdth' 115;
+		font-weight: 700;
+		font-size: 0.6875rem;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+		color: var(--ink-2);
+	}
+
+	.sheet__steps {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.sheet__steps li {
+		display: grid;
+		grid-template-columns: 1.75rem minmax(0, 1fr) auto;
+		align-items: baseline;
+		gap: 0.9rem;
+		padding: 0.7rem 0;
+		font-family: var(--font-mono);
+		font-size: 0.75rem;
+		color: var(--ink);
+		line-height: 1.5;
+	}
+
+	.sheet__steps li + li {
+		border-top: 1px solid var(--seam-soft);
+	}
+
+	.sheet__box {
+		width: 0.8rem;
+		height: 0.8rem;
+		align-self: center;
+		box-shadow: inset 0 0 0 1px var(--ink-3);
+	}
+
+	.sheet__n {
+		font-family: var(--font-mono);
+		font-size: 0.6875rem;
+		color: var(--ink-3);
+		font-variant-numeric: tabular-nums;
+	}
+
+	.sheet__steps s {
+		text-decoration-color: var(--pencil);
+		text-decoration-thickness: 2px;
+	}
+
+	.replacement {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		align-items: center;
+		gap: 0.6rem 1.5rem;
+		padding: 1.25rem 1.5rem;
+		background: var(--console-raised);
+		border-radius: 4px;
+		box-shadow:
+			inset 0 1px 0 rgb(255 255 255 / 0.8),
+			0 0 0 1px var(--seam);
+	}
+
+	.replacement .engraved {
+		grid-column: 1 / -1;
+	}
+
+	.replacement__step {
+		display: flex;
+		align-items: center;
+		gap: 0.9rem;
+		margin: 0;
+		font-size: 1.125rem;
+	}
+
+	.replacement__step strong {
+		font-weight: 700;
+	}
+
+	.replacement__link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		color: var(--ink);
+		font-weight: 600;
+		font-size: 0.9375rem;
+		text-decoration: none;
+		border-bottom: 1px solid var(--ink);
+		padding-bottom: 0.1rem;
+	}
+
+	.replacement__link:hover .icon {
+		transform: translateX(3px);
+	}
+
+	.replacement__link .icon {
+		width: 1rem;
+		height: 1rem;
+		transition: transform 200ms var(--ease-out);
+	}
+
+	@media (max-width: 64rem) {
+		.checklist__grid {
+			grid-template-columns: minmax(0, 1fr);
+		}
+	}
+
+	@media (max-width: 30rem) {
+		.sheet {
+			padding-inline: 1rem;
+		}
+
+		.replacement {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

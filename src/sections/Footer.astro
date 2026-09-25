@@ -1,0 +1,128 @@
+---
+import { URLS } from '../data/content';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const columns = [
+	{
+		title: 'Product',
+		links: [
+			{ label: 'Releases', href: URLS.releases },
+			{ label: 'Roadmap', href: URLS.roadmap },
+			{ label: 'Raycast extension', href: URLS.raycast },
+		],
+	},
+	{
+		title: 'Community',
+		links: [
+			{ label: 'GitHub', href: URLS.repo },
+			{ label: 'Discussions', href: URLS.discussions },
+			{ label: 'Contributing', href: URLS.contributing },
+		],
+	},
+];
+---
+
+<footer class="footer">
+	<div class="wrap footer__grid">
+		<div class="footer__brand">
+			<img src={`${base}/gomander-logo.webp`} alt="" width="48" height="48" loading="lazy" />
+			<p>
+				Built by two developers who got tired of the daily terminal chaos. A <a href={URLS.lazylabz} target="_blank" rel="noopener">Lazy Labz</a> project.
+			</p>
+		</div>
+
+		{columns.map((col) => (
+			<nav aria-label={col.title}>
+				<h2 class="engraved">{col.title}</h2>
+				<ul>
+					{col.links.map((l) => (
+						<li><a href={l.href} target="_blank" rel="noopener">{l.label}</a></li>
+					))}
+				</ul>
+			</nav>
+		))}
+	</div>
+	<div class="wrap footer__base">
+		<span>© {new Date().getFullYear()} Gomander · GPL-3</span>
+		<span>The Go gopher was designed by Renée French</span>
+	</div>
+</footer>
+
+<style>
+	.footer {
+		background: var(--console-sunk);
+		border-top: 1px solid var(--seam);
+		padding-block: 3.5rem 2rem;
+		font-size: 0.9375rem;
+	}
+
+	.footer__grid {
+		display: grid;
+		grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
+		gap: 2.5rem;
+	}
+
+	.footer__brand {
+		display: flex;
+		gap: 1rem;
+		align-items: flex-start;
+		max-width: 26rem;
+	}
+
+	.footer__brand img {
+		border-radius: 10px;
+		box-shadow: 0 0 0 1px var(--seam);
+	}
+
+	.footer__brand p {
+		margin: 0;
+		color: var(--ink-2);
+	}
+
+	.footer a {
+		color: var(--ink);
+	}
+
+	.footer h2 {
+		margin: 0 0 1rem;
+	}
+
+	.footer ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		gap: 0.55rem;
+	}
+
+	.footer ul a {
+		text-decoration: none;
+	}
+
+	.footer ul a:hover {
+		text-decoration: underline;
+	}
+
+	.footer__base {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		gap: 0.5rem 2rem;
+		margin-top: 3rem;
+		padding-top: 1.5rem;
+		border-top: 1px solid var(--seam);
+		font-size: 0.8125rem;
+		color: var(--ink-2);
+	}
+
+	@media (max-width: 48rem) {
+		.footer__grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.footer__brand {
+			grid-column: 1 / -1;
+		}
+	}
+</style>

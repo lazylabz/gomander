@@ -1,0 +1,230 @@
+---
+import Icon from '../components/Icon.astro';
+import { MAC_QUARANTINE_CMD, PLATFORMS, URLS, VERSION } from '../data/content';
+---
+
+<section class="download" id="download">
+	<div class="wrap">
+		<div class="download__head">
+			<h2 class="section-title">Cleared for launch.</h2>
+			<p class="section-lede">
+				Free and open source under GPL-3. The app updates itself from here on, so this is the only download you
+				need.
+			</p>
+		</div>
+
+		<div class="bays">
+			{PLATFORMS.map((p) => (
+				<article class="bay" data-bay={p.id}>
+					<header class="bay__head">
+						<h3>{p.label}</h3>
+						<span class="lamp" data-bay-lamp>{VERSION}</span>
+					</header>
+					<ul class="bay__builds">
+						{p.builds.map((b, i) => (
+							<li>
+								<a class={`pushbutton ${i === 0 ? 'pushbutton--go' : 'pushbutton--plain'}`} href={b.href}>
+									<Icon name="download" />
+									<span>{b.label}</span>
+								</a>
+							</li>
+						))}
+					</ul>
+					{p.id === 'mac' && (
+						<div class="bay__note">
+							<p>
+								The macOS build is not signed yet (the Apple certificate costs $100 a year). After installing, clear the
+								quarantine flag once:
+							</p>
+							<div class="copyline">
+								<code>{MAC_QUARANTINE_CMD}</code>
+								<button type="button" data-copy={MAC_QUARANTINE_CMD} aria-label="Copy command">
+									<Icon name="copy" />
+								</button>
+							</div>
+						</div>
+					)}
+				</article>
+			))}
+		</div>
+
+		<p class="download__foot">
+			Other builds and release notes on <a href={URLS.releases} target="_blank" rel="noopener">GitHub Releases</a>.
+			Commands that need a full TUI, like ngrok’s dashboard, are not supported yet.
+		</p>
+	</div>
+</section>
+
+<script>
+	for (const button of document.querySelectorAll<HTMLButtonElement>('[data-copy]')) {
+		button.addEventListener('click', async () => {
+			try {
+				await navigator.clipboard.writeText(button.dataset.copy ?? '');
+				button.dataset.copied = '';
+				button.setAttribute('aria-label', 'Copied');
+				setTimeout(() => {
+					delete button.dataset.copied;
+					button.setAttribute('aria-label', 'Copy command');
+				}, 1800);
+			} catch {
+				button.setAttribute('aria-label', 'Copy failed, select the command manually');
+			}
+		});
+	}
+</script>
+
+<style>
+	.download {
+		padding-block: clamp(5rem, 10vw, 9rem);
+	}
+
+	.download__head {
+		display: grid;
+		grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+		gap: 1.5rem clamp(2rem, 5vw, 5rem);
+		align-items: end;
+		margin-bottom: clamp(2.5rem, 5vw, 4rem);
+	}
+
+	.download__head .section-lede {
+		margin: 0;
+	}
+
+	.bays {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1px;
+		background: var(--seam);
+		border-radius: 6px;
+		overflow: hidden;
+		box-shadow:
+			0 0 0 1px var(--seam),
+			0 30px 60px -40px rgb(30 34 30 / 0.5);
+	}
+
+	.bay {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		padding: clamp(1.25rem, 2.5vw, 2rem);
+		background: var(--console-raised);
+	}
+
+	.bay__head {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.bay h3 {
+		margin: 0;
+		font-variation-settings: 'wdth' 85;
+		font-weight: 800;
+		font-size: 2rem;
+		letter-spacing: -0.02em;
+	}
+
+	:global(html[data-os='mac']) .bay[data-bay='mac'] .lamp,
+	:global(html[data-os='windows']) .bay[data-bay='windows'] .lamp,
+	:global(html[data-os='linux']) .bay[data-bay='linux'] .lamp {
+		--lamp: var(--accent);
+		--legend: var(--ink);
+	}
+
+	.bay__builds {
+		list-style: none;
+		display: grid;
+		gap: 0.6rem;
+		margin: 0;
+		padding: 0;
+	}
+
+	.bay__builds .pushbutton {
+		width: 100%;
+		justify-content: flex-start;
+		min-height: 2.9rem;
+		font-size: 0.75rem;
+	}
+
+	:global(html[data-os='mac']) .bay:not([data-bay='mac']) .pushbutton--go,
+	:global(html[data-os='windows']) .bay:not([data-bay='windows']) .pushbutton--go,
+	:global(html[data-os='linux']) .bay:not([data-bay='linux']) .pushbutton--go {
+		background: var(--console-raised);
+		box-shadow:
+			inset 0 1px 0 rgb(255 255 255 / 0.7),
+			inset 0 -2px 0 rgb(0 0 0 / 0.1),
+			0 0 0 1px var(--seam),
+			0 4px 10px -6px rgb(0 0 0 / 0.35);
+	}
+
+	.bay__note {
+		margin-top: auto;
+		padding-top: 1.25rem;
+		border-top: 1px dashed var(--seam);
+	}
+
+	.bay__note p {
+		margin: 0 0 0.75rem;
+		font-size: 0.875rem;
+		color: var(--ink-2);
+	}
+
+	.copyline {
+		display: flex;
+		align-items: stretch;
+		border-radius: 3px;
+		background: var(--screen);
+		overflow: hidden;
+	}
+
+	.copyline code {
+		flex: 1;
+		min-width: 0;
+		padding: 0.7rem 0.8rem;
+		font-size: 0.6875rem;
+		line-height: 1.6;
+		color: var(--phosphor);
+		overflow-wrap: anywhere;
+	}
+
+	.copyline button {
+		display: grid;
+		place-items: center;
+		width: 2.75rem;
+		border: 0;
+		border-left: 1px solid var(--screen-seam);
+		background: var(--screen-raised);
+		color: var(--phosphor-dim);
+		cursor: pointer;
+		transition: color 160ms var(--ease-out);
+	}
+
+	.copyline button:hover {
+		color: var(--phosphor);
+	}
+
+	.copyline button[data-copied] {
+		color: var(--go-lit);
+	}
+
+	.download__foot {
+		margin: 1.75rem 0 0;
+		font-size: 0.9375rem;
+		color: var(--ink-2);
+		max-width: 70ch;
+	}
+
+	.download__foot a {
+		color: var(--ink);
+	}
+
+	@media (max-width: 64rem) {
+		.download__head {
+			grid-template-columns: minmax(0, 1fr);
+		}
+
+		.bays {
+			grid-template-columns: minmax(0, 1fr);
+		}
+	}
+</style>

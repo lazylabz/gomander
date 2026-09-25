@@ -1,0 +1,23 @@
+---
+type Name = 'download' | 'github' | 'arrow-right' | 'arrow-up-right' | 'copy' | 'check' | 'replay' | 'stop' | 'play' | 'search';
+
+interface Props {
+	name: Name;
+	class?: string;
+}
+
+const { name, class: className = 'icon' } = Astro.props;
+---
+
+<svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+	{name === 'download' && <><path d="M12 4v11" /><path d="m7 10.5 5 5 5-5" /><path d="M5 20h14" /></>}
+	{name === 'arrow-right' && <><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></>}
+	{name === 'arrow-up-right' && <><path d="M7 17 17 7" /><path d="M8 7h9v9" /></>}
+	{name === 'copy' && <><rect x="8.5" y="8.5" width="11" height="11" rx="1.5" /><path d="M15.5 8.5V6a1.5 1.5 0 0 0-1.5-1.5H6A1.5 1.5 0 0 0 4.5 6v8A1.5 1.5 0 0 0 6 15.5h2.5" /></>}
+	{name === 'check' && <path d="m5 12.5 4.5 4.5L19 7.5" />}
+	{name === 'replay' && <><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3" /><path d="M4.5 4.5v4h4" /></>}
+	{name === 'stop' && <rect x="6.5" y="6.5" width="11" height="11" rx="1" />}
+	{name === 'play' && <path d="M8 5.5v13l10.5-6.5z" />}
+	{name === 'search' && <><circle cx="11" cy="11" r="6" /><path d="m20 20-4.5-4.5" /></>}
+	{name === 'github' && <path fill="currentColor" stroke="none" d="M12 2.5a9.5 9.5 0 0 0-3 18.52c.47.09.65-.2.65-.46v-1.6c-2.64.57-3.2-1.27-3.2-1.27-.43-1.1-1.06-1.39-1.06-1.39-.86-.59.07-.58.07-.58.95.07 1.45.98 1.45.98.85 1.45 2.22 1.03 2.76.79.09-.61.33-1.03.6-1.27-2.1-.24-4.32-1.05-4.32-4.69 0-1.03.37-1.88.98-2.54-.1-.24-.43-1.2.09-2.51 0 0 .8-.26 2.61.97a9.05 9.05 0 0 1 4.76 0c1.81-1.23 2.6-.97 2.6-.97.53 1.31.2 2.27.1 2.51.61.66.98 1.51.98 2.54 0 3.65-2.23 4.45-4.34 4.68.34.3.65.88.65 1.78v2.64c0 .26.17.56.66.46A9.5 9.5 0 0 0 12 2.5Z" />}
+</svg>

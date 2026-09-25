@@ -1,0 +1,302 @@
+/* Mirrors the Gomander app's own light theme (shadcn tokens + xterm.js defaults)
+   so every product demo on the page looks like the shipped UI, not an invention. */
+.gx {
+	--gx-bg: #ffffff;
+	--gx-fg: #0a0a0a;
+	--gx-sidebar: #fafafa;
+	--gx-accent: #f5f5f5;
+	--gx-border: #e5e5e5;
+	--gx-muted: #737373;
+	--gx-green-100: #dcfce7;
+	--gx-green-200: #bbf7d0;
+	--gx-green-500: #22c55e;
+	--gx-red-100: #fee2e2;
+	--gx-term-dim: #666666;
+	--gx-term-cyan: #29b8db;
+	--gx-term-green: #0dbc79;
+	--gx-term-red: #cd3131;
+	--gx-term-yellow: #b5b500;
+	--gx-term-blue: #2472c8;
+	--gx-term-magenta: #bc3fbc;
+
+	font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+	font-size: 14px;
+	line-height: 1.4;
+	color: var(--gx-fg);
+	letter-spacing: normal;
+	font-variation-settings: normal;
+}
+
+.gx button {
+	display: inline-grid;
+	place-items: center;
+	padding: 0;
+	border: 0;
+	background: none;
+	color: var(--gx-muted);
+	cursor: pointer;
+	font: inherit;
+}
+
+.gx button:hover {
+	color: var(--gx-fg);
+}
+
+.gx-window {
+	overflow: hidden;
+	border-radius: 10px;
+	background: var(--gx-bg);
+	box-shadow:
+		0 0 0 1px rgb(0 0 0 / 0.14),
+		0 30px 60px -30px rgb(30 34 30 / 0.55),
+		0 12px 24px -16px rgb(30 34 30 / 0.35);
+}
+
+.gx-titlebar {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 32px;
+	background: #f6f6f6;
+	border-bottom: 1px solid var(--gx-border);
+	font-size: 13px;
+	font-weight: 600;
+	color: #4d4d4d;
+}
+
+.gx-lights {
+	position: absolute;
+	left: 12px;
+	display: flex;
+	gap: 8px;
+}
+
+.gx-lights i {
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background: #ff5f57;
+	box-shadow: inset 0 0 0 0.5px rgb(0 0 0 / 0.15);
+}
+
+.gx-lights i:nth-child(2) {
+	background: #febc2e;
+}
+
+.gx-lights i:nth-child(3) {
+	background: #d4d4d4;
+}
+
+.gx-sidebar {
+	background: var(--gx-sidebar);
+	border-right: 1px solid var(--gx-border);
+}
+
+.gx-group-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	padding: 8px;
+	font-weight: 500;
+}
+
+.gx-group-name {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	min-width: 0;
+}
+
+.gx-group-name span {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.gx-group-actions {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex: none;
+	font-weight: 500;
+}
+
+.gx-cmd {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	margin: 0 8px 2px;
+	padding: 7px 10px 7px 16px;
+	border-radius: 6px;
+	transition: background-color 180ms ease;
+}
+
+.gx-cmd__name,
+.gx button.gx-cmd__name {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	min-width: 0;
+}
+
+.gx-cmd__name span {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.gx-cmd__name svg {
+	color: var(--gx-muted);
+	flex: none;
+}
+
+.gx-cmd[data-active] {
+	background: var(--gx-accent);
+}
+
+.gx-cmd[data-state='running'] {
+	background: var(--gx-green-100);
+}
+
+.gx-cmd[data-state='running'][data-active] {
+	background: var(--gx-green-200);
+}
+
+.gx-cmd[data-state='error'] {
+	background: var(--gx-red-100);
+}
+
+.gx-cmd [data-when] {
+	display: none;
+}
+
+.gx-cmd[data-state='idle'] [data-when='idle'],
+.gx-cmd:not([data-state='idle']) [data-when='running'] {
+	display: inline-grid;
+}
+
+.gx-term {
+	background: var(--gx-bg);
+	color: var(--gx-fg);
+	font-family: ui-monospace, Menlo, Monaco, 'Courier New', monospace;
+	font-size: 12px;
+	line-height: 1.45;
+	padding: 10px 12px;
+	overflow: hidden;
+}
+
+.gx-term p {
+	margin: 0;
+	white-space: pre;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.gx-term .ts {
+	color: var(--gx-term-dim);
+}
+
+.gx-term .cmdline {
+	color: var(--gx-term-cyan);
+	font-weight: 700;
+}
+
+.gx-term .a-green {
+	color: var(--gx-term-green);
+}
+
+.gx-term .a-red {
+	color: var(--gx-term-red);
+}
+
+.gx-term .a-yellow {
+	color: var(--gx-term-yellow);
+}
+
+.gx-term .a-blue {
+	color: var(--gx-term-blue);
+}
+
+.gx-term .a-magenta {
+	color: var(--gx-term-magenta);
+}
+
+.gx-term .a-cyan {
+	color: var(--gx-term-cyan);
+}
+
+.gx-term .a-link {
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+
+.gx-dot {
+	position: relative;
+	display: inline-flex;
+	width: 6px;
+	height: 6px;
+}
+
+.gx-dot::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border-radius: 50%;
+	background: #a3a3a3;
+}
+
+.gx-dot[data-on]::before {
+	background: var(--gx-green-500);
+}
+
+.gx-dot[data-on]::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border-radius: 50%;
+	background: var(--gx-green-500);
+	opacity: 0.75;
+	animation: gx-ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes gx-ping {
+	75%,
+	100% {
+		transform: scale(2);
+		opacity: 0;
+	}
+}
+
+.gx-toast {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 14px 16px;
+	border-radius: 8px;
+	background: #ffffff;
+	border: 1px solid var(--gx-border);
+	box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+	font-size: 13px;
+}
+
+.gx-toast__action {
+	flex: none;
+	padding: 5px 9px;
+	border-radius: 4px;
+	background: #171717;
+	color: #fafafa;
+	font-size: 12px;
+	font-weight: 500;
+}
+
+.gx-tooltip {
+	display: inline-block;
+	padding: 6px 12px;
+	border-radius: 6px;
+	background: #171717;
+	color: #fafafa;
+	font-size: 12px;
+}
