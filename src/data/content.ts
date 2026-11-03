@@ -1,4 +1,4 @@
-export const VERSION = 'v1.10.0';
+export const VERSION = 'v2.0.1';
 
 const REPO = 'https://github.com/lazylabz/gomander-app';
 
